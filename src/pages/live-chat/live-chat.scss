@@ -1,0 +1,227 @@
+page-live-chat {
+    /*
+    ion-content{
+        background: url('../assets/imgs/123.mp4') no-repeat center center fixed !important;
+        background-size: cover !important;
+    }
+    */
+    .fullscreen { 
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translate(-50%, -50%);
+      }
+    .topscreen { 
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        z-index: 9999999999999999;
+        transform: translate(-50%, -50%);
+      }
+    .item-radio{
+        width:100%
+    }
+    .quesCards {
+        box-shadow: 0px 0 20px rgba(0,0,0,.3);
+        margin:15px;
+        border-radius: 10px;
+        width: calc(100% - 30px);
+        position: absolute;
+        top:5px;
+        z-index: 99;
+        height: 90%;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .pads0{
+        padding: 0px;
+    }
+    .quesnum{
+        background: #c7e9ff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: 600;
+        position: relative;
+        top: 4px;
+    }
+    .round-progress{
+        margin: auto;
+        position: relative;
+        top:-25px;
+    }
+    .current{
+        top: -42px;
+        bottom: auto;
+        font-size: 18px;
+        font-weight: 600;
+        color: #2f88ce;
+        position: relative;
+    }
+    /*
+    video {
+	    position: fixed;
+	    top: 50%;
+	    left: 50%;
+	    min-width: 100%;
+	    min-height: 100%;
+	    width: auto;
+	    height: auto;
+	    z-index: -100;
+	    transform: translateX(-50%) translateY(-50%);
+	}*/
+
+
+            .bounceIn {
+            animation-iteration-count: infinite;
+            animation-name: bounceIn;
+            animation-duration: 1s;
+            }
+            @-webkit-keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+            -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+            opacity: 0;
+            -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+            }
+            20% {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+            -webkit-transform: scale3d(.9, .9, .9);
+            transform: scale3d(.9, .9, .9);
+            }
+            60% {
+            opacity: 1;
+            -webkit-transform: scale3d(1.03, 1.03, 1.03);
+            transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+            -webkit-transform: scale3d(.97, .97, .97);
+            transform: scale3d(.97, .97, .97);
+            }
+            100% {
+            opacity: 1;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+            }
+            }
+            @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+            -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+            opacity: 0;
+            -webkit-transform: scale3d(.3, .3, .3);
+            transform: scale3d(.3, .3, .3);
+            }
+            20% {
+            -webkit-transform: scale3d(1.1, 1.1, 1.1);
+            transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+            -webkit-transform: scale3d(.9, .9, .9);
+            transform: scale3d(.9, .9, .9);
+            }
+            60% {
+            opacity: 1;
+            -webkit-transform: scale3d(1.03, 1.03, 1.03);
+            transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+            -webkit-transform: scale3d(.97, .97, .97);
+            transform: scale3d(.97, .97, .97);
+            }
+            100% {
+            opacity: 1;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+            }
+            } 
+          
+  
+    .atndusernum{
+        font-size: 22px;
+        position: relative;
+        top: -2px;
+        font-weight: 500;
+    }
+
+    .item-radio-checked{
+        //background-color: rgba(52, 126, 255, .3) !important;
+        border: 1px solid rgba(52, 126, 255, 1) !important;
+        box-shadow: 0px 0px 5px 0px rgba(52, 126, 255,0.3);
+    }
+    .item-radio {
+        border: 1px solid #fff;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+        border-radius: 50px;
+        margin-bottom: 12px;
+    }
+    .item-cus-red {
+        border: 1px solid rgb(236, 62, 62);
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 5px 0px rgba(236, 62, 62, 0.3);
+        border-radius: 50px;
+        margin-bottom: 12px;
+    }
+
+    .item-cus-green {
+        border: 1px solid rgb(96, 188, 96);
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 5px 0px rgba(96, 188, 96, 0.3);
+        border-radius: 50px;
+        margin-bottom: 12px;
+    }
+    .effectofanswer{
+        position: absolute;
+        z-index: 999;
+        bottom: 0px;
+        left:0px;
+        width: 40%;
+    }
+
+    .useranscounts {
+    position: absolute;
+    right: 10px;
+    background: #c8e9fc;
+    padding: 2px 10px;
+    border-radius: 20px;
+    top: 12px;
+    z-index: 9;
+    }
+
+    .toolbar-background-md {
+        border-color: rgba(178, 178, 178, 0);
+        background: transparent;
+    }
+    .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        top: -2px;
+        bottom: auto;
+        background-position: left 0 top 0;
+        height: 0px;
+    }
+    .toolbar-content-md {
+        max-width: 98%;
+        background: #fff;
+        border-radius: 25px;
+        margin: auto;
+    }
+    ion-input, ion-textarea {
+        width: 82%;
+    }
+    .text-input-md {
+        margin: 16px 12px;padding-left: 12px;
+    }
+}

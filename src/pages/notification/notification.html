@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Notification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content overflow-scroll='true' padding>
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div style="padding: 6px;">
+    <div *ngIf="loadershow">
+      <div class="showbox">
+          <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+            </svg>
+          </div>
+        </div>
+  </div>
+
+          <div *ngIf="!loadershow">
+    <div *ngFor="let item of datalistitems" class="postcard animated bounceIn" tappable (click)="itemSelected(item)" style="border-bottom: 1px solid #ccc !important;" no-padding text-center>
+      <div class="content" style="border-left: 4px solid #043b7b;" [style.background]="item.bgcolor" no-padding>
+        <ion-grid>
+          <ion-row>
+              <ion-col col-2>
+                  <img src="assets/imgs/cmpy_logo.png" style="width: 75%;">
+                </ion-col>
+            <ion-col col-10>
+              <div text-left>
+                <h4>{{item.title}}</h4>
+              </div>
+              <div text-right>
+                <p>{{dateformats(item.modifydate)}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</ion-content>

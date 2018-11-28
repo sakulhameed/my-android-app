@@ -1,0 +1,94 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content overflow-scroll='true' padding class="bgbody">
+      <ion-refresher (ionRefresh)="forceReload($event)">
+          <ion-refresher-content>
+          </ion-refresher-content>
+        </ion-refresher>
+
+        <div *ngIf="loader==1">
+            <div class="showbox">
+                <div class="loader">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+                  </svg>
+                </div>
+              </div>
+        </div>
+  
+        <div *ngIf="loader!=1" style="padding: 0px; min-height:100%;">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-6 *ngFor="let item of datalistitems" >
+                            <div class="postcard" text-center *ngIf="item.product_type == '1'">
+                                    <header tappable (click)="itemSelecteddetails(item)">
+                                        <div class="bio" class="bgdummy">
+                                            <img [src]="getSafeUrl(item.prdimg)" height="180px" alt="Product" class="bg">
+                                        </div>
+                                    </header>
+                                    <div class="content">
+                                        <div text-center tappable (click)="itemSelecteddetails(item)">
+                                            <h3 class="product-title blackbtn" style="height: 40px;overflow:hidden">
+                                                {{item.title}}
+                                            </h3>
+                                            <h4 class="product-price" tappable (click)="itemSelecteddetails(item)">
+                                                <del>Rs. {{item.discount}}</del>
+                                                Rs. {{item.price}}
+                                            </h4>
+                                        </div>
+                                        <div class="product-buttons" *ngIf="item.purchase == '1'">
+                                            <button small ion-button outline icon-start tappable (click)="itemView(item)">
+                                                <ion-icon name='eye' is-active="false"></ion-icon>
+                                                View Book
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="postcard taketest" text-center *ngIf="item.product_type == '2'">
+                            <header tappable (click)="itemSelected(item)" [style]="getBackground(item.packagestyele)">
+                                <div class="bio cusbio">
+                                    <img [src]="getSafeUrl(item.image)" alt="Product">
+                                </div>
+                                <h3 class="product-title blackbtn" style="position: relative;z-index: 10;height: 26px;margin:0px;overflow:hidden">
+                                    {{item.title}}
+                                </h3>
+                            </header>
+                            <div class="content">
+                                <div text-center>
+                                    <h4 class="product-price">
+                                        <del>Rs. {{item.discount}}</del>
+                                        Rs. {{item.price}}
+                                    </h4>
+                                </div>
+                                <div class="product-buttons" *ngIf=" item.purchase == '1'">
+                                    <button ion-button outline icon-start tappable (click)="itemSelected(item)">
+                                        <ion-icon name='eye' is-active="false"></ion-icon>
+                                        View 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+  </ion-content>
+
+  <ion-footer *ngIf="buy == '0'">
+        <ion-toolbar no-padding>
+            <ion-grid no-padding>
+                <ion-row>
+                  <ion-col style="padding:0px 5px">
+                      <button ion-button block color="primary" icon-start tappable (click)="buynow(items)"> <ion-icon name='cart' is-active="false"></ion-icon> Buy Now</button>
+                  </ion-col>
+                </ion-row>
+                </ion-grid>
+        </ion-toolbar>
+      </ion-footer>
+      

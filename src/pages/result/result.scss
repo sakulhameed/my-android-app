@@ -1,0 +1,92 @@
+page-result {
+    .postcard {
+        padding-top: 0.5em;
+    }
+    ion-card-header {
+        font-weight: bold;
+    }
+    .crt{
+        color: #4caf50;
+     }
+     
+     .incrt {
+         color:#f56284;
+     }
+     .crtbg{
+        background-color: #4caf50;float: left;height: 9px;width: 30%;
+     }
+     .incrtbg{
+        background-color: #f56284;float: left;height: 9px;width: 30%;
+     }
+     .skipbg{
+        background-color: #d1ecfb;float: left;height: 9px;width: 30%;
+     }
+     .skip {
+         color:#d1ecfb;
+     }
+     
+     .ans {
+         color:#4667f2;
+     }
+     .colorsec span{
+        font-weight: 500;
+        font-size: 12px;
+        padding: 0px 4px;
+     }
+     .hidden {
+         display: none;
+     }
+     .showdiv {
+         display: block;
+     }
+    .secname {
+        height: 20px;
+        font-size: 15px;
+        word-break: break-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .tabs h5 {
+        font-size: 11px !important;
+    }
+    .mainfonts {
+        color: #1c9373;
+        font-size: 15px;
+    }
+    .postcard{
+        box-shadow: 0 0 5px rgba(0,0,0,.15);
+    }
+    .progress {
+        height: 14px;
+        width: 100%;
+        margin:7px 0px;
+    }
+    h6{
+        font-size: 15px;
+    }
+    .mainrk {
+        font-size: 20px;
+    }
+    ion-fab[top][edge] {
+        top: 20px !important;
+    }
+    .topmenu {
+        position: relative;
+        top: -85px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgba(0,0,0,.15);
+        background-color: #ffffff;
+    }
+    .bottomaccess{
+        position: relative;
+        top: -90px;
+    }
+    .ranknum{
+        padding: 4px 10px;
+        background-color: #4266f3;
+        border-radius: 50%;
+        color: #fff;
+    }
+}

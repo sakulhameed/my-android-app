@@ -1,0 +1,125 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-segment color="light" [(ngModel)]="langs" >
+            <ion-segment-button value="1" (ionSelect)="changeTab(1)">
+              Live Test
+            </ion-segment-button>
+            <ion-segment-button value="2" (ionSelect)="changeTab(2)">
+              Live Chat liveTest
+            </ion-segment-button>
+          </ion-segment>
+    </ion-navbar>
+
+  </ion-header>
+  
+  <ion-content overflow-scroll='true' >
+      <ion-refresher (ionRefresh)="forceReload($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <div *ngIf="loadershow">
+        <div class="showbox">
+            <div class="loader">
+              <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+              </svg>
+            </div>
+          </div>
+    </div>
+
+            <div *ngIf="!loadershow">
+                <div class="notifytop" *ngFor="let nty of nofitylist">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-11>
+                        <h6 style="position: relative;top:4px;"><ion-icon style="color: #347eff;padding-right: 5px;" name="pricetags"></ion-icon> {{nty.title}}</h6>
+                      </ion-col>
+                      <ion-col col-1 tappable (click)="itemDeleted(nty)">
+                          <h6 style="position: relative;top:4px;">X</h6>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+       <div style="padding: 10px;" *ngIf="langs=='1'">
+          <div class="postcard" *ngFor="let item of datalistitems" tappable (click)="itemSelected(item)" no-padding text-center>
+                  <header [style.background]="item.btnbg" >
+                      <h3>{{item.name}}</h3>
+                      <div class="content">
+                          <div class="product-buttons">
+                              <button tappable (click)="liveTestSelected(item,item.btntype)"  ion-button style="font-variant: petite-caps;
+                              font-size: 17px !important;padding: 8px 25px;" [style.background]="item.btnbgname" >{{item.btnname}}</button>
+                          </div>
+                          <h4>{{item.btnsubtitle}}</h4>
+                      </div>
+                      <div text-right *ngIf="item.show_result!=1">
+                        <h4 class="blink" ><b>Live</b></h4>
+                      </div>
+                  </header>
+                  
+              </div>              
+            </div>
+            <div class="livechatbox" *ngIf="langs=='2'" >
+             <div class="comingsoon"></div>
+
+             
+             <!--<ion-grid>
+               <ion-row>
+                 <ion-col col-3>
+                   <ion-icon style="position: relative;top: 5px;" name="person-add"></ion-icon>
+                 </ion-col>
+                 <ion-col col-6>
+                   <img style="position: relative;top: -6px;" src="assets/imgs/chatlogo.png" />
+                 </ion-col>
+                 <ion-col col-3>
+                  <ion-icon class="iconbg" name="help"></ion-icon>
+                 </ion-col>
+               </ion-row>
+               <ion-row>
+                 <ion-col col-12 style="color:#fff;">
+                   <h4 style="font-size: 20px;">NEXT LIVE QUIZ</h4>
+                   <h3>{{nextestcnts}}</h3>
+                   <h5>{{rewardscnts}}</h5>
+                 </ion-col>
+               </ion-row>
+               <ion-row>
+                <ion-card class="quesCards" >
+                  <ion-card-header class="pads0" text-center>
+                      <img src="assets/imgs/user.png" class="prfimg" />
+                      <h3 style="margin-bottom: 8px;" class="colortextchat">Hello, {{testusername}}</h3>
+                  </ion-card-header>
+              
+                  <ion-card-content class="pads0">
+                    <ion-grid class="pads0">
+                      <ion-row>
+                        <ion-col col-6 style="border: 2px solid #e9e8ef;">
+                            <h4 class="colorgrychat">Total Points</h4>
+                            <h2 style="margin: 20px auto;" class="colortextchat">{{totpoints}}</h2>
+                        </ion-col>
+                        <ion-col col-6 style="border: 2px solid #e9e8ef;border-left: 0px;">
+                            <h4 class="colorgrychat">Last Quiz Points</h4>
+                            <h2 style="margin: 20px auto;" class="colortextchat">{{lastpoints}}</h2>
+                        </ion-col>
+                        <ion-col col-12>
+                            <button *ngIf="testactive=='1'" trapped (click)="openLiveChatPage()" class="mainbtn" ion-button >Start Quiz</button>
+                            <button *ngIf="testactive=='0'" trapped class="mainbtn" ion-button >Quiz Finished</button>
+                            <button *ngIf="testactive=='2'" trapped class="mainbtn" ion-button >{{btname}}</button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    </ion-card-content>
+                    </ion-card>
+                
+               </ion-row>
+               <ion-row>
+                 <ion-col col-6>
+                    <button *ngIf="show_result" class="submbtn" ion-button >Leaderboard</button>
+                    <button *ngIf="!show_result" class="submbtn" ion-button >Leaderboard Soon</button>
+                 </ion-col>
+                 <ion-col col-6>
+                    <button class="submbtn" trapped (click)="share()" ion-button >Invite</button>
+                 </ion-col>
+               </ion-row>
+             </ion-grid>-->
+            </div>
+          </div>
+  </ion-content>
+  

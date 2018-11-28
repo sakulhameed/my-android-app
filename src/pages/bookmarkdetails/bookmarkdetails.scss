@@ -1,0 +1,25 @@
+page-bookmarkdetails {
+
+     p{
+          margin: 1px;
+          font-size: 16px;
+      }
+      li{
+        font-size: 16px;
+      }
+      .commondata {
+          height: 100px;
+          overflow:auto;
+          background-color:#f0f0f0;
+      }
+      .commondataauto{
+          height: auto;
+          overflow:auto;
+          background-color:#f0f0f0;
+      }
+      .optn {
+        background: #fff;
+        padding: 12px;
+        font-size: 15px;
+      }
+}

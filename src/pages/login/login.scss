@@ -1,0 +1,44 @@
+page-login {
+    .scroll-content{
+        padding-bottom: 0 !important;
+    }
+   .login-content {
+        background: url('../assets/imgs/loginbg.jpg') no-repeat center center fixed !important;
+        background-size: cover !important;
+    }
+    .padsright16 {
+        padding: 0px;
+     }
+     .cusheight {
+         height: 4rem !important;
+     }
+    .centerlogo {
+        padding: 10px;
+        text-align: center;
+        margin-top:5%;
+    }
+
+    .item-md {
+        background-color: rgba(255, 255, 255, 0) !important;
+    }
+    .button-inner{
+        text-transform: initial;
+    }
+
+    ion-input::-moz-placeholder {
+        color: #043b7b;
+      }
+      
+      ion-input:-ms-input-placeholder {
+        color: #043b7b;
+      }
+      
+      ion-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: #043b7b;
+      }
+      .input-has-focus, .text-input-md {
+        color: #043b7b !important;
+      }
+    
+}

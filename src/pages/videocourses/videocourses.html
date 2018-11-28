@@ -1,0 +1,87 @@
+<ion-header>
+        <ion-navbar color="primary">
+          <ion-title>{{title}}</ion-title>
+        </ion-navbar>
+        <!--[style]="getBackground(packagestylecus)"-->
+        <header >
+            <div class="bio cusbio">
+                <img [src]="getSafeUrl(setimage)" alt="Product">
+            </div>
+            <h3 class="product-title blackbtn" style="position: relative;z-index: 10;font-size:22px;height: 55px;margin:0px;overflow:hidden">
+                {{title}}
+            </h3>
+        </header>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+                <ion-select [(ngModel)]="subject" interface="popover" style="width: 100%;" (ionChange)='onSecChange()'>
+                    <ion-option  *ngFor="let s of datalistsub" [value]="s.keys" trapped >{{s.name}}</ion-option>
+                  </ion-select>
+            </ion-col>
+            <ion-col col-6>
+                <ion-select [(ngModel)]="topics" interface="popover" style="width: 100%;" (ionChange)='onSecChangetp()' >
+                    <ion-option value="">All</ion-option>
+                    <ion-option  *ngFor="let s of datalisttopic" [value]="s.id">{{s.name}}</ion-option>
+                  </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-header>
+      <ion-content overflow-scroll='true' class="bgbody">
+          <ion-refresher (ionRefresh)="forceReload($event)">
+            <ion-refresher-content>
+            </ion-refresher-content>
+          </ion-refresher>
+            
+          <div *ngIf="loader==1">
+            <div class="showbox">
+              <div class="loader">
+                <svg class="circular" viewBox="25 25 50 50">
+                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          
+          <div *ngIf="loader!=1" style="padding: 0px; min-height:100%;" >
+          
+            <ion-list>
+              <div *ngFor="let item of datalistitems">
+              <button ion-item tappable *ngIf="(item.subject==Sections||Sections=='')&&(item.topic==topics||topics=='')" trapped (click)="itemSelected(item)"  >
+                <div class="cardpads" no-padding>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-4 text-center>
+                            <img [src]="getSafeUrlvid(item.image)" />
+                            <img [src]="geticonsimgs(item)" class="onplayover" />
+                      </ion-col>
+                      <ion-col col-8 text-left>
+                        <h4 class="settestlistheight" style="white-space: initial;">{{item.video_name}}</h4>
+                        <p *ngIf="buy=='1'&&item.live_date=='0000-00-00'&&item.active!='1'" class="notred">Coming Soon</p>
+                        <p *ngIf="buy=='1'&&item.live_date!='0000-00-00'&&item.active!='1'" class="notred">Live On [{{item.live_date}}]</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </button>
+            </div>
+            </ion-list>
+
+          </div>
+</ion-content>
+
+<ion-footer *ngIf="buy=='0'">
+  <ion-toolbar no-padding style="min-height:50px">
+      <ion-grid no-padding>
+          <ion-row>
+            <ion-col style="padding:0px 5px">
+                <button ion-button block color="primary" icon-start tappable (click)="addtocart(items)"> <ion-icon name='cart' is-active="false"></ion-icon> Add To Cart</button>
+            </ion-col>
+            <ion-col style="padding:0px 5px">
+                <button ion-button block color="secondary" icon-start tappable (click)="addtocart(items)"> <ion-icon name='cart' is-active="false"></ion-icon> Buy Now</button>
+            </ion-col>
+          </ion-row>
+          </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+        

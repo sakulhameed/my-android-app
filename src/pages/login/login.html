@@ -1,0 +1,47 @@
+<ion-content overflow-scroll='true' padding class="login-content">
+      <div class="centerlogo" >
+      <img src="assets/imgs/cmpy_logo.png" style="width:100px;" />
+      </div>
+      <div text-center>
+          <h3>Sign In</h3>
+        </div>
+        <form [formGroup]="loginform" (ngSubmit)="onSubmit(loginform.value)" style="padding:20px 20px 0px 20px;">
+        <ion-item class="padsright16">
+            <ion-label floating floating>Email Id</ion-label>
+            <ion-input type="email" formControlName="email" name="email"></ion-input>
+        </ion-item>
+        <ion-item class="padsright16">
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" formControlName="password" name="password"></ion-input>
+          </ion-item>
+        
+    <div style="padding: 25px 0px 0px">
+          <button ion-button type="submit" class="cusheight" block>Sign In</button>
+        </div>
+    </form>
+    <div style="padding: 15px;text-align:right;">
+        <button ion-button clear tappable (click)="forgetpass()">Forget Password?</button>
+      </div>
+      <div style="padding:0px">
+        <ion-grid>
+          <ion-row>
+              <ion-col text-center>
+                  <img (click)="doGoogleLogin()" src="assets/imgs/googlelogin.png" width="65%" />
+                </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div style="padding: 0px;text-align:center;">
+        <button ion-button clear tappable (click)="mailto()">Mail to support@ibpsguide.com</button>
+      </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar transparent color="secondary">
+    <div style="text-align: center;">
+          <button ion-button block clear tappable (click)="doGoogleLogin()">No Account? Register</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+

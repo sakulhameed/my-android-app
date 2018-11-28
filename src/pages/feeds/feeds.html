@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Practice Quiz</ion-title>
+    <ion-buttons end style="padding: 0px 7px;">
+      <button ion-button class="ntfyblue animated infinite pulse" tappable (click)="itemSelectedpack(CartPage)" icon-only>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+   <!-- <ion-buttons end style="padding: 0px 7px;">
+      <button ion-button class="ntfyblue animated infinite pulse" tappable (click)="itemSelectedpack(NotificationPage)" icon-only>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+  <ion-toolbar color="primary">
+    <super-tabs [selectedTabIndex]="selectTab" class="innertabs" transitionDuration="100" sideMenuThreshold="100" shortSwipeDuration="100"
+      dragThreshold="100" selectedTabIndex="0" allowElementScroll="true" scrollTabs="true" (tabSelect)="onTabSelect($event)"
+      tabsPlacement="top" toolbarBackground="primary" toolbarColor="light" indicatorColor="light">
+      <super-tab *ngFor="let p of subjects" [root]="p.sub_page" [title]="p.sub_name" [id]="p.sub_id"></super-tab>
+    </super-tabs>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll='true' class="bgbody">
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="loader==1">
+    <div class="showbox">
+      <div class="loader">
+        <svg class="circular" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loader!=1" style="padding: 0px; min-height:100%;" (swipe)="slideToIndex($event)">
+      <ion-grid style="border-bottom: 1px solid #d0cfcf;box-shadow: 0px 0px 8px 2px #000000;">
+          <ion-row class="marginheader">
+            <ion-col col-8 text-left>
+             <h2 style="margin-top: 12px; margin-left: 15px;"> {{settitle}} </h2>
+            </ion-col>
+            <ion-col col-4 text-right>
+              <ion-select [(ngModel)]="attemptedtype" style="max-width: 100%;" (ionChange)='onSecChange()'>
+                <ion-option value="">All</ion-option>
+                <ion-option value="1">Attempted test</ion-option>
+                <ion-option value="2">UnAttempted test</ion-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    <ion-list>
+      <div *ngFor="let item of datalistitems">
+      <button ion-item tappable (click)="itemChecking(item,item.btntype)">
+        <div [class]="onpausetest(item,item.btntype)" no-padding>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-10 text-left>
+                <h4 class="settestlistheight" style="white-space: initial;">{{item.name}}</h4>
+                <p>{{item.tot_ques}} Questions, {{item.time_limit}} mins</p>
+              </ion-col>
+              <ion-col col-2 text-center>
+                <button ion-button small clear item-end>
+                  <ion-icon [name]="onpausetesticon(item,item.btntype)" [style.color]="onpausetestcolor(item,item.btntype)" style="font-size: 2em;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </button>
+    </div>
+    </ion-list>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

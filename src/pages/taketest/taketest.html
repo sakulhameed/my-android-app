@@ -1,0 +1,231 @@
+<div [class]="menuopen? 'sidenavoverIn slideInRight':'sidenavoverOut slideOutRight'">
+  <div [class]="menuopen? 'sidenavoverIn':'sidenavoverOut'" tappable (click)="closedmenu()">
+  </div>
+  <div [class]="menuopen? 'sidenavIn':'sidenavOut'">
+    <ion-content overflow-scroll='true' style="background: #f0f0f0 !important">
+      <div class="innner-body">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-2>
+              <button ion-button icon-only tappable (click)="closedmenu()">
+                <ion-icon name="close"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-10>
+              <ion-item>
+                <ion-select [(ngModel)]="Section" interface="popover" style="width: 100%;" (ionChange)='onSecChange()'>
+                  <ion-option *ngFor="let key of section" [disabled]="time_type==2" [value]="key.value">{{key.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div *ngFor="let sec of section">
+          <div *ngIf="Section==sec.value">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-2 *ngFor="let item of questions[sec.value]" text-center>
+                  <ion-icon *ngIf="item.quesmark=='1'" name="star" style="color:#032650;" class="starlb"></ion-icon>
+                  <div [class]="addclassfilter(item.status)" tappable (click)="onSelectQues(item.quesorder,sec.value)">
+                    <div class="pads">
+                      {{item.quesorder}}
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+    <ion-footer no-border>
+      <div class="bottomfooter">
+        <ion-grid>
+          <ion-row>
+            <ion-col text-center>
+              <ion-icon name="star" style="color:#032650;" class="starlb"></ion-icon>
+              <div class="qbtn ans">
+                <div class="pads">
+                  {{quesmarked}}
+                </div>
+              </div>
+              <b>Marked</b>
+            </ion-col>
+            <ion-col text-center>
+              <div class="qbtn ans">
+                <div class="pads">
+                  {{quesanswered}}
+                </div>
+              </div>
+              <b>Answered</b>
+            </ion-col>
+            <ion-col text-center>
+              <div class="qbtn skip">
+                <div class="pads">
+                  {{quesskipped}}
+                </div>
+              </div>
+              <b>Skipped</b>
+            </ion-col>
+            <ion-col text-center>
+              <div class="qbtn">
+                <div class="pads">
+                  {{quesunseen}}
+                </div>
+              </div>
+              <b>Unseen</b>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ion-toolbar text-center color="primary" tappable (click)="postRequest()">
+        <ion-buttons block text-center>
+          <button ion-button block icon-start class="submitbtn">
+            <ion-icon name="power" color="light"></ion-icon> Submit
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
+</div>
+
+
+<ion-header no-border>
+  <ion-navbar hideBackButton color="light">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2 text-left>
+          <ion-buttons start>
+            <button ion-button icon-only tappable (click)="openmenu()">
+              <ion-icon name="apps"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-8 text-center tappable (click)="onPausetest(items.testpaneltype)">
+          <ion-buttons ion-button icon-start style="font-size: 1.6rem;">
+            <ion-icon name="pause" class="pauseloader" color="#fff"></ion-icon>
+            <span class="pausetext">{{testtime}}</span>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-2 text-right>
+          <ion-buttons end *ngIf="testlangtype==2">
+            <button ion-button icon-only *ngIf="lang==1" tappable (click)="onChangeLang()">
+              <img src="assets/imgs/en.png" width="25px" />
+            </button>
+            <button ion-button icon-only *ngIf="lang==2" tappable (click)="onChangeLang()">
+              <img src="assets/imgs/hindi.png" width="25px" />
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+  <ion-toolbar color="primary" style="min-height: auto;">
+      <ion-grid>
+          <ion-row>
+            <ion-col col-12 text-left *ngIf="time_type!=2">
+              <ion-scroll scrollX style="height:30px;">
+                <div [class]="key.value==Section?'scroll-itemact':'scroll-item'" *ngFor="let key of section" tapped (click)="SectionTab(key.value)">
+                  {{key.name}}
+                </div>
+              </ion-scroll>
+            </ion-col>
+            <ion-col col-10 text-left *ngIf="time_type==2">
+              <ion-scroll scrollX style="height:30px;">
+                <div [class]="key.value==Section?'scroll-itemact':'scroll-item'" *ngFor="let key of section" tapped (click)="switchalert()">
+                  {{key.name}}
+                </div>
+              </ion-scroll>
+            </ion-col>
+            <ion-col col-2 text-left *ngIf="time_type==2">
+              <span class="sectimes">{{secmaincountdown}}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+  </ion-toolbar>
+  <div text-left style="position: relative;left: 0px;width:100%;top:0px;border-bottom: 1px solid #ccc;background:#fff;z-index: 9999;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3 text-left>
+            <span class="bag">{{currentques}}/{{tot_ques}}</span>
+          </ion-col>
+          <ion-col col-4 text-right>
+            <span class="qtol" style="color:#4667f2">{{toMMSS(currentquestime)}}</span>
+          </ion-col>
+          <ion-col col-3 text-right>
+           <span class="crmrk">+{{currentques_plusmrk}}</span>|<span class="ermrk">-{{currentques_minusmrk}}</span>
+          </ion-col>
+          <ion-col col-2 text-center>
+           <ion-icon name="star" style="font-size: 21px;" [color]="currentques_quesmark=='1' ? 'danger':''" tappable
+              (click)="onMarkQues()"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+</ion-header>
+
+<ion-content overflow-scroll='true'>
+
+  <div *ngFor="let sec of section">
+    <div *ngIf="Section==sec.value">
+      <div *ngFor="let item of questions[sec.value]">
+        <div *ngIf="item.quesorder==currentques" [class]="item.quesorder==currentques? 'zoomIn':''" style="padding: 5px;margin-top:5px; width:100%; min-height:100vh;overflow:hidden"
+          (swipe)="onQuesChanged($event,item.qv,sec.value)">
+          <div style="top: 0px; position: relative;">
+            <div padding [innerHTML]="transform(item.commondata)" *ngIf="item.commondata!=''&&lang==1" text-left class="commondataauto"
+              (swipe)="onQuesChanged($event,item.qv,sec.value)"></div>
+            <div padding [innerHTML]="transform(item.hcommondata)" *ngIf="item.commondata!=''&&lang==2" text-left class="commondataauto"
+              (swipe)="onQuesChanged($event,item.qv,sec.value)"></div>
+            <!--<ion-badge class="viewallbtn" *ngIf="item.commondata!=''&&item.qcmd==1" >View All</ion-badge>-->
+            <div padding [innerHTML]="transform(item.ques)" *ngIf="lang==1" text-left></div>
+            <div padding [innerHTML]="transform(item.hques)" *ngIf="lang==2" text-left></div>
+
+            <div hidden>
+              <ion-input type="text" hidden [(ngModel)]="item.status"></ion-input>
+              <ion-input type="text" hidden [(ngModel)]="item.time_spent"></ion-input>
+            </div>
+            <div text-left>
+              <ion-list radio-group [(ngModel)]="item.option_ids[0]" (ionChange)='onQuesValanswer(item.qv,sec.value)'>
+                <ion-item *ngFor="let optn of item.optn">
+                  <ion-label [innerHTML]="transform(optn.name)" *ngIf="lang==1" text-left></ion-label>
+                  <ion-label [innerHTML]="transform(optn.hname)" *ngIf="lang==2" text-left></ion-label>
+                  <ion-radio [value]="optn.value"></ion-radio>
+                </ion-item>
+              </ion-list>
+            </div>
+            <div text-left style="min-height: 50px;margin-bottom: 25px;">
+              <button *ngIf="item.option_ids[0]" ion-button clear icon-left (click)="onQuesClearresponser()">
+                <ion-icon name="trash"></ion-icon>
+                Clear Response
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer color="light">
+  <ion-toolbar color="light">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-buttons left>
+            <button ion-button tappable (click)="onQuesminsChanged()">
+              <ion-icon name="arrow-round-back" style="padding: 0px 5px;"></ion-icon>Prev
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-buttons right>
+            <button ion-button tappable (click)="onQuesaddChanged()">
+              Next<ion-icon name="arrow-round-forward" style="padding: 0px 5px;"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

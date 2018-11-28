@@ -1,0 +1,58 @@
+<!--
+  Generated template for the UserRegistorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>user-registor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+-->
+
+<ion-content overflow-scroll='true' padding class="login-content">
+     <div class="centerlogo">
+        <img src="assets/imgs/cmpy_logo.png" style="width:100px;" />
+      </div>
+      <div text-center>
+          <h3>Sign Up</h3>
+        </div>
+     <form [formGroup]="registorform" (ngSubmit)="onSubmit(registorform.value)" style="padding:20px;">
+        <ion-item class="padsright16">
+            <ion-label floating >Name</ion-label>
+            <ion-input type="text" formControlName="username" name="username"></ion-input>
+        </ion-item>
+        <ion-item class="padsright16">
+            <ion-label floating >Mobile No</ion-label>
+            <ion-input type="number" formControlName="mobile" name="mobile"></ion-input>
+        </ion-item>
+        <ion-item class="padsright16">
+            <ion-label floating >Email Id</ion-label>
+            <ion-input type="email" formControlName="email" name="email"></ion-input>
+        </ion-item>
+        <ion-item class="padsright16">
+            <ion-label floating >Password</ion-label>
+            <ion-input type="password" formControlName="password" name="password"></ion-input>
+        </ion-item>
+        <ion-item class="padsright16">
+          <ion-label floating >Password</ion-label>
+          <ion-input type="password" formControlName="cfpassword" name="cfpassword"></ion-input>
+        </ion-item>
+        <div style="padding: 25px 0px;">
+          <button ion-button type="submit" class="cusheight" block  >Sign Up</button>
+        </div>
+    </form>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar transparent color="secondary">
+    <div style="text-align: center;">
+          <button ion-button block clear tappable (click)="signup();">Have an Account? Sign In</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

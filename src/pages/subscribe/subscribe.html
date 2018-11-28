@@ -1,0 +1,79 @@
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Subscribe</ion-title>
+    <ion-buttons end>
+      <button ion-button class="ntfyblue animated infinite pulse" tappable (click)="itemSelectedpack(CartPage)" icon-only>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content overflow-scroll='true' padding class="bgbody">
+  <div style="min-height: 120px;background-color: #4667f2">
+   <ion-grid>
+      <ion-row>
+        <ion-col col-4 text-right>
+          <img [src]="getSafeUrl(profileimage)" style="width: 85px; height: 80px;border-radius:50%;" />
+      </ion-col>
+      <ion-col col-8 text-center>
+        <div *ngIf="subdate==0" text-center>
+          <button ion-button color="greenans" tappable (click)="openWebpage(openpackage.subenter,openpackage.subscription_id)">{{openpackage.btnname}}</button>
+        </div>
+        <div *ngIf="subdate==1" text-center>
+          <h5 style="color:#fff;">Valid Till Date :</h5>
+          <button ion-button color="greenans" >{{openpackage.btnname}}</button>
+        </div>
+      
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <div style="margin-bottom: 30px;position: relative;top: -42px;">
+    <div padding >
+      <div class="postcard" *ngFor="let item of itemsubscriptn">
+        <div class="content">
+          <div style="padding-top: 15px;">
+          <h3> {{item.title}}</h3>
+          <div [innerHTML]="transform(item.features)"></div>
+          <h4 class="product-price text-center" style="margin: 5px;font-size: 25px;">
+            <del>RS. {{item.discount}}</del>
+            Rs. {{item.price}}
+          </h4>
+          <div style="text-align: left" [innerHTML]="transform(item.description)"></div>
+        </div>
+        <button ion-button style="color:green;" clear small *ngIf="item.btntype==0&&couponapply==1" tappable>Coupon Applied</button>
+        <button ion-button clear small *ngIf="clickbtn==0&&item.btntype==0&&couponapply==0" tappable (click)="showcoupon()">Apply Coupon</button>
+        <ion-grid *ngIf="clickbtn==1&&item.btntype==0&&couponapply==0">
+            <ion-row>
+              <ion-col ion-item col-8>
+                  <ion-input type="text" [(ngModel)]="coupon" placeholder="Enter Coupon"></ion-input>
+              </ion-col>
+              <ion-col col-4>
+                  <button ion-button clear small tappable (click)="tabsubptnlisting(1)">Apply</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-grid *ngIf="item.btntype==1">
+            <ion-row>
+              <ion-col col-6>
+                <button ion-button outline tappable (click)="itemSelectedpack(TestpurchasePage)">Purchase Test</button>
+              </ion-col>
+              <ion-col col-6>
+                <button ion-button outline tappable (click)="itemSelectedpack(EbookpurchasePage)">Purchase Ebooks</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <div text-center *ngIf="item.btntype==0">
+            <button ion-button outline tappable (click)="openWebpage(item.subenter,item.subscription_id)">{{item.btnname}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

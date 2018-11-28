@@ -1,0 +1,89 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>{{items.video_name}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content overflow-scroll='true' class="bgbody">
+   
+    <ion-refresher (ionRefresh)="forceReload($event)">
+      <ion-refresher-content>
+      </ion-refresher-content>
+    </ion-refresher>
+
+
+    <div class="resp-container">
+        <iframe *ngIf="checkitvid()" [src]="getSafeUrlvid()" class="resp-iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+            Your Video Is Loading...
+        </iframe>
+        <img *ngIf="!checkitvid()" [src]="getSafeUrlvid()" class="resp-iframe" />
+        <img *ngIf="buy=='0'&&items.pay_type!='0'" trapped (click)="addtocart(products)" src="assets/imgs/lockplay_thumb_new.png" class="onplayover" />
+    </div>
+    <h3>{{items.video_name}}</h3>
+    <p>{{items.video_desc}}</p>
+
+    <ion-list>
+        <div style="text-align: left;padding: 0px 15px;border-bottom: 1px solid #e6e6e6;"><h3 style="font-size: larger;font-weight: 500;">Test List</h3></div>
+        <div *ngFor="let item of datalistitems">
+        <button ion-item tappable (click)="itemChecking(item,item.btntype)">
+          <div [class]="onpausetest(item,item.btntype)" no-padding>
+            <ion-grid>
+              <ion-row>
+                <ion-col col-10 text-left>
+                  <h4 class="settestlistheight" style="white-space: initial;">{{item.name}}</h4>
+                  <p>{{item.tot_ques}} Questions, {{item.time_limit}} mins</p>
+                </ion-col>
+                <ion-col col-2 text-center>
+                  <button ion-button small clear item-end>
+                    <ion-icon [name]="onpausetesticon(item,item.btntype)" [style.color]="onpausetestcolor(item,item.btntype)" style="font-size: 2em;"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </button>
+      </div>
+      </ion-list>
+
+
+      <ion-list>
+            <div style="text-align: left;padding: 0px 15px;border-bottom: 1px solid #e6e6e6;"><h3 style="font-size: larger;font-weight: 500;">More Videos List</h3></div>
+            
+            <div *ngFor="let item of datalistviditems">
+            <button ion-item tappable *ngIf="(item.active=='1')" trapped (click)="itemSelectedvideos(item)"  >
+              <div class="cardpads" no-padding>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-4 text-center>
+                          <img [src]="getSafeUrlvid2(item.image)" />
+                          <img [src]="geticonsimgs(item)" class="onplayover" />
+                    </ion-col>
+                    <ion-col col-8 text-left>
+                      <h4 class="settestlistheight" style="white-space: initial;">{{item.video_name}}</h4>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </button>
+          </div>
+          </ion-list>
+
+</ion-content>
+
+
+<ion-footer *ngIf="buy == '0'">
+    <ion-toolbar no-padding style="min-height:50px">
+        <ion-grid no-padding>
+            <ion-row>
+              <ion-col style="padding:0px 5px">
+                  <button ion-button block color="primary" icon-start tappable (click)="addtocart(products)"> <ion-icon name='cart' is-active="false"></ion-icon> Add To Cart</button>
+              </ion-col>
+              <ion-col style="padding:0px 5px">
+                  <button ion-button block color="secondary" icon-start tappable (click)="addtocart(products)"> <ion-icon name='cart' is-active="false"></ion-icon> Buy Now</button>
+              </ion-col>
+            </ion-row>
+            </ion-grid>
+    </ion-toolbar>
+  </ion-footer>
+          

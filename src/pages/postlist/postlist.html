@@ -1,0 +1,74 @@
+<ion-header >
+    <ion-navbar color="primary" >
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Feeds</ion-title>
+          <ion-buttons end style="padding: 0px 7px;">
+              <button ion-button class="ntfyblue animated infinite pulse" tappable (click)="itemSelectedpack(CartPage)" icon-only>
+                <ion-icon name="cart"></ion-icon>
+              </button>
+            </ion-buttons>
+            <ion-buttons end style="padding: 0px 7px;">
+              <button ion-button class="ntfyblue animated infinite pulse" tappable (click)="itemSelectedpack(NotificationPage)" icon-only>
+                <ion-icon name="notifications"></ion-icon>
+              </button>
+            </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar color="primary">
+        <super-tabs [selectedTabIndex]="selectTab" class="innertabs" selectedTabIndex="0" allowElementScroll="true" scrollTabs="true" (tabSelect)="onTabSelect($event)" tabsPlacement="top" toolbarBackground="primary" toolbarColor="light" indicatorColor="light">
+            <super-tab *ngFor="let p of subjects" root="NewsPage" [title]="p.name" [id]="p.id"></super-tab>
+          </super-tabs>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content overflow-scroll='true' class="bgbody" >
+      <ion-refresher (ionRefresh)="forceReload($event)">
+          <ion-refresher-content>
+          </ion-refresher-content>
+        </ion-refresher>
+        <div *ngIf="loader==1">
+            <div class="showbox">
+                <div class="loader">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+                  </svg>
+                </div>
+              </div>
+        </div>
+        <div *ngIf="loader!=1" style="padding: 0px; min-height:100%;" (swipe)="slideToIndex($event)">
+                <ion-grid>
+                    <ion-row >
+                        <ion-col col-12 *ngFor="let item of datalistitems">
+                            <div class="postcard" text-center >
+        
+                                <div class="content" tappable (click)="itemSelected(item)">
+                                        <div style="font-size: 14px;font-weight: 700;color: #043b7b;" [innerHTML]="transform(item.title)" text-left></div>
+                                        
+                                        <div style="font-size: 11px;" [innerHTML]="shortstring(item.excerpt)" text-left></div>
+                                        
+                                </div>
+                                <div>
+                                    <ion-grid>
+                                        <ion-row>
+                                            <ion-col text-left>
+                                                    <p style="font-size: 13px;font-weight: 700;color: #ccc;margin: 0;">{{dateformats(item.modified)}}</p>
+                                            </ion-col>
+                                            <ion-col text-right>
+                                                <button ion-button clear icon-only tappable (click)="share(item)" >
+                                                    <ion-icon name="share"></ion-icon>
+                                                  </button>
+                                            </ion-col>
+                                        </ion-row>
+                                    </ion-grid>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+          </div>
+            <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+                  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+  </ion-content>
+  

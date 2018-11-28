@@ -1,0 +1,340 @@
+page-taketest {
+    .grid{ padding:0px; }
+    [icon-left] ion-icon, [icon-start] ion-icon {
+        font-size: 1em !important;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+        .scroll-item {
+            display: inline-block;
+            padding: 5px;
+            color: #d0d9ff !important;
+            background: #4667f2;
+            border-radius: 0px;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .scroll-itemact {
+            display: inline-block;
+            padding: 0px;
+            padding-bottom:5px;
+            margin: 5px;
+            color: #fff !important;
+            background: #4667f2;
+            border-radius: 0px;
+            position: relative;
+            z-index: 10;
+            font-weight: bold;
+        }
+        .scroll-itemact::after{
+            position: absolute;
+            z-index: 9999;
+            content: '';
+            bottom: -2px;
+            left: 20%;
+            width: 50%;
+            border-bottom: 4px solid #fff;
+        }
+      }
+    .sectimes {
+        color: #fff;
+        font-weight: 700;
+        position: relative;
+        top: 6px;
+        right: -15px;
+    }
+    .leftarrowslider {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        font-size: 25px;
+        font-weight: 700;
+        color: #fff;
+        background: #2b43a9;
+        padding: 8px 5px;
+        z-index: 15;
+    }
+    .rightarrowslider {
+        position: fixed;
+        right: 80px;
+        top: 0px;
+        font-size: 25px;
+        font-weight: 700;
+        color: #fff;
+        background: #2b43a9;
+        padding: 8px 5px;
+        z-index: 15;
+    }
+    .pauseloader {
+        padding: 6px;
+        border: 1px solid #4667f2;
+        border-radius: 50%;
+        margin-right:10px;
+        color:#4667f2;
+    }
+    .item-radio p{
+        display:inline !important;
+    }
+    .pausetext{
+        font-size: 16px;
+        font-weight: 500;
+        color:#4667f2;
+    }
+    .crmrk{
+        color: #43d9a3;
+        padding: 0px 5px;
+        font-size: 12px;
+    }
+    .ermrk {
+        color: #ff5252;
+        padding: 0px 5px;
+        font-size: 12px;
+    }
+    .bag{
+        color: #fff;
+        padding: 2px 6px;
+        background: #4667f2;
+        font-weight: bold;
+    }
+    .qtol {
+        color:#333;
+        padding: 0px 5px;
+    }
+        .slideInRight {
+            -webkit-animation-name: slideInRight;
+            animation-name: slideInRight;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            }
+            @-webkit-keyframes slideInRight {
+            0% {
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            visibility: visible;
+            }
+            100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            }
+            }
+            @keyframes slideInRight {
+            0% {
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            visibility: visible;
+            }
+            100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            }
+            } 
+            .slideOutRight {
+                -webkit-animation-name: slideOutRight;
+                animation-name: slideOutRight;
+                -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                }
+                @-webkit-keyframes slideOutRight {
+                0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+                }
+                100% {
+                visibility: hidden;
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+                }
+                }
+                @keyframes slideOutRight {
+                0% {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+                }
+                100% {
+                visibility: hidden;
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+                }
+                } 
+              
+    ion-scroll {
+      width: 100%;
+      height: 100%;
+    }
+    ion-slide{
+        margin-bottom: 10px;
+        overflow: scroll;
+    }
+    p{
+        margin: 1px;
+    }
+    .innner-body *{
+        font-size: 16px;
+       }
+    .commondata {
+        height: 70px;
+        overflow:auto;
+        background-color:#f0f0f0;
+    }
+    .viewallbtn{
+        position: relative;
+        top: -12px;background: #f0f0f0;
+        margin: 0px;
+        font-size: 13px;
+        color: #043b7b;
+    }
+
+    .commondataauto{
+        height: auto;
+        overflow:auto;
+        background-color:#ffffff;
+        border-bottom: 1px solid #ccc;
+    }
+    .slide-zoom {
+        text-align: center;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .toolbar-title {
+        text-align: center !important;
+    }
+    .item-radio-checked ion-label {
+        //font-weight: bold !important;
+    }
+
+    .item-radio-checked{
+        //background-color: rgba(52, 126, 255, .3) !important;
+        border: 1px solid rgba(52, 126, 255, 1) !important;
+    }
+    .item-radio {
+        border: 1px solid #fff;
+    }
+    ion-select {
+        max-width: 100% !important;
+    }
+    .submitbtn .button-inner{
+        font-size: 22px;
+        font-weight: 600;
+    }
+    .qbtn{
+        border-radius: 50%;
+        width: 35px !important;
+        height: 35px !important;
+        border: 1px solid #ccc;
+        font-size: 13px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .pads {
+        padding-top: 10px;
+        padding-left: 0px;
+        font-size: 12px;
+    font-weight: bold;
+    }
+    .postcard{
+        margin-bottom: 10px;
+    }
+    ion-label{
+        white-space: inherit !important;
+    }
+    .starlb {
+        position: absolute;
+        right: 8px;
+        top: 0px;
+    }
+    .skip{
+        background-color: #ff5252 !important;
+        border: 1px solid #ff5252 !important;
+        color:#fff !important;
+    }
+    .ans {
+        background-color: #43d9a3 !important;
+        border: 1px solid #43d9a3 !important;
+        color:#fff !important;
+    }
+    .setpostcard {
+        min-height: 80vh !important;
+        width: auto !important;
+      }
+.bottomfooter b {
+    font-size: 12px;
+}
+.bottomfooter{
+    padding-top: 10px;
+}
+
+/* The side navigation menu */
+.sidenavIn {
+    height: 100%;
+    width: 85%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    padding-top: 0px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.sidenavOut {
+    height: 100%;
+    width: 85%;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    padding-top: 0px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+ion-footer {
+    height: auto;
+    background-color: #e8e8e8;
+    font-size: 12px;
+    bottom: 0px !important;
+}
+.sidenavoverOut{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    padding-top: 0px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.sidenavoverIn{
+    width: 100%;
+    height: 100%;
+    background: rgba(23, 22, 22, 0);
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    padding-top: 0px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.slideInRight {
+    animation-duration: 0.2s;
+}
+.slideOutRight {
+    animation-duration: 0.2s;
+}
+*{
+    font-size: 16px;
+}
+}
+

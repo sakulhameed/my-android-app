@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Bookmark Questions</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-segment color="light" [(ngModel)]="types" >
+      <ion-segment-button value="0" (ionSelect)="changeTab(0)">
+        Update Profile
+      </ion-segment-button>
+      <ion-segment-button value="1" (ionSelect)="changeTab(1)">
+        Update Mobile No
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll='true' padding>
+  <div *ngIf="loader==1">
+    <div class="showbox">
+        <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+</div>
+
+<div *ngIf="loader!=1" style="padding: 0px; min-height:100%;" (swipe)="slideToIndex($event)">
+<div>
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Mobile</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  
+  <div padding>
+    <button block>Sign In</button>
+  </div>
+
+</div>
+</div>
+      
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title style="color:#fff !important;" [innerHTML]="transform(items.title)"></ion-title>
+  <ion-buttons end>
+      <button ion-button tappable (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  </ion-header>
+<ion-content overflow-scroll='true' no-padding>
+    <ion-fab top center edge *ngIf="loadershow">
+        <button style="background-color: #fff;" ion-fab mini><img src="assets/imgs/loaders.gif" /></button>
+    </ion-fab>
+  <div style="width:100%">
+    <img [src]="getSafeUrl(image)" alt="postimage" style="width:100%">
+  </div>
+<div style="padding:0px 10px 10px 10px; text-align:left;overflow-x:auto;" [innerHTML]="transform(items.content)"></div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-padding>
+    <button ion-button block color="secondary" icon-start tappable (click)="share(items)"> <ion-icon name='share'></ion-icon> Share</button>
+  </ion-toolbar>
+</ion-footer>

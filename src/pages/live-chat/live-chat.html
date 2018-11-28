@@ -1,0 +1,167 @@
+<ion-content padding>
+    <video class="fullscreen" autoplay muted loop>
+        <source src="assets/imgs/123.mp4" type="video/mp4">
+    </video>
+
+    <div *ngIf="loadingsolution=='1'">
+      <ion-card class="quesCards">
+          <ion-card-header class="pads0">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-4 text-left>
+                  <span class="quesnum">Total Ques-{{totques}}</span>
+                </ion-col>
+                <ion-col col-8 text-right>
+                  <span>
+                    <ion-icon name="people" style="font-size: 25px;"></ion-icon>
+                    <span class="atndusernum">{{useractive}}</span>
+                  </span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                  <ion-col text-center col-12>
+                    <h2 style="font-size: 28px;font-weight: 500;">IBPSGuide Live Quiz Game!!!</h2>  
+                    <h4 style="font-size: 14px;font-weight: 400;">Please Wait Before Complete the generations</h4>
+                  </ion-col>
+                <ion-col text-center col-12 style="position: relative;top: 45px;">
+                  <round-progress class="round-progress" [current]="maincurrent" [max]="mainmax" [color]="prgressmaincolor" [background]="prgresssubcolor" [radius]="100"
+                    [stroke]="10" [semicircle]="true" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutCubic'"
+                    [animationDelay]="0">
+                  </round-progress>
+                  <div class="current bounceIn" style="font-size: 50px;top: -70px" [style.color]="prgressmaincolor" >{{ maincurrent }}</div>
+                </ion-col>
+                <ion-col text-center col-12 style="position: relative;top: -10px;">
+                  <h5 style="font-size: 20px;font-weight: 500;">Waiting for Quiz to Solutions...</h5>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+      </ion-card>
+  </div>
+
+<div *ngIf="openquesnow=='1'">
+    <ion-card class="quesCards">
+        <ion-card-header class="pads0">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4 text-left>
+                <span class="quesnum">Total Ques-{{totques}}</span>
+              </ion-col>
+              <ion-col col-8 text-right>
+                <span>
+                  <ion-icon name="people" style="font-size: 25px;"></ion-icon>
+                  <span class="atndusernum">{{useractive}}</span>
+                </span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+                <ion-col text-center col-12>
+                  <h2 style="font-size: 28px;font-weight: 500;">IBPSGuide Live Quiz Game!!!</h2>  
+                  <h4 style="font-size: 14px;font-weight: 400;">Test is Live!!!  The Question will be asked with option, you can choose correct answer to get points. Points will be shown in your leaderboard screen. Give a well play!!</h4>
+                </ion-col>
+              <ion-col text-center col-12 style="position: relative;top: 45px;">
+                <round-progress class="round-progress" [current]="maincurrent" [max]="mainmax" [color]="prgressmaincolor" [background]="prgresssubcolor" [radius]="100"
+                  [stroke]="10" [semicircle]="true" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutCubic'"
+                  [animationDelay]="0">
+                </round-progress>
+                <div class="current bounceIn" style="font-size: 50px;top: -70px" [style.color]="prgressmaincolor" >{{ maincurrent }}</div>
+              </ion-col>
+              <ion-col text-center col-12 style="position: relative;top: -10px;">
+                <h5 style="font-size: 20px;font-weight: 500;">You have missed {{currentques}} Questions out of {{totques}} Questions in this Quiz</h5>
+                <h5 style="font-size: 20px;font-weight: 500;">Waiting for Quiz to start...</h5>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</div>
+
+<div *ngIf="openquesnow=='0'">
+<div *ngFor="let item of quesdata">
+  <ion-card class="quesCards" *ngIf="item.quesactive==currentques">
+    <ion-card-header class="pads0">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 text-left>
+            <span class="quesnum">Q-{{item.quesorder}}</span>
+          </ion-col>
+          <ion-col col-8 text-right>
+            <span>
+              <ion-icon name="people" style="font-size: 25px;"></ion-icon>
+              <span class="atndusernum">{{useractive}}</span>
+            </span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col text-center>
+           
+            <round-progress class="round-progress" [current]="current" [max]="max" [color]="prgressmaincolor" [background]="prgresssubcolor" [radius]="35"
+              [stroke]="5" [semicircle]="true" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutCubic'"
+              [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)">
+            </round-progress>
+            <div class="current bounceIn" [style.color]="prgressmaincolor" >{{ current }}</div>
+
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="showques" style="position: relative; top:-50px;" >
+          <div style="top: 0px; position: relative;width:100%" >
+              <div style="width:100%" padding [innerHTML]="transform(item.question)" text-left ></div>
+              <div text-left style="width:100%">
+                  <ion-list radio-group [(ngModel)]="item.ques_ans" (ionChange)='onQuesValanswer(item)' >
+                    <ion-item *ngFor="let optn of item.optn">
+                      <ion-label [innerHTML]="transform(optn.name)" text-left></ion-label>
+                      <ion-radio [value]="optn.value"></ion-radio>
+                    </ion-item>
+                  </ion-list>
+              </div>
+          </div>
+        </ion-row>
+        <ion-row *ngIf="!showques" style="position: relative; top:-50px;" >
+          <div style="top: 0px; position: relative;width:100%" >
+              <div style="width:100%" padding [innerHTML]="transform(item.explanation)" text-left ></div>
+              <div text-left style="width:100%">
+                <!--background: linear-gradient(90deg, green 50%, #fff 50%);  [style.background]="getopbg(optn,item)"-->
+                <ion-list>
+                  <ion-item *ngFor="let optn of item.optn" [class]="itemoptnclass(optn,item)"  >
+                    <ion-label  text-left>
+                      <span [innerHTML]="transform(optn.name)"></span>
+                      <span class="useranscounts">{{getopbgcount(optn,item)}}</span>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+            </div>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    <ion-fab bottom right edge style="bottom:-2px;right:0px;">
+      <button ion-fab mini>{{item.totanswerqs}}</button>
+    </ion-fab>
+  </ion-card>
+</div>
+<div>
+  
+</div>
+<audio src="assets/imgs/bgsound.mp3" loop="true" autostart="true" hidden="true"></audio>
+
+<div class="effectofanswer">
+  <img *ngIf="answerimgval==1" src="assets/imgs/success.gif" />
+  <img *ngIf="answerimgval==2" src="assets/imgs/error.gif" />
+  <img *ngIf="answerimgval==3" src="assets/imgs/unattend.gif" />
+</div>
+</div>
+
+</ion-content>

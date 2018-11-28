@@ -1,0 +1,193 @@
+<div [class]="menuopen? 'sidenavoverIn slideInRight':'sidenavoverOut slideOutRight'">
+  <div [class]="menuopen? 'sidenavoverIn':'sidenavoverOut'" tappable (click)="closedmenu()">
+  </div>
+  <div [class]="menuopen? 'sidenavIn':'sidenavOut'">
+    <ion-content overflow-scroll='true' style="background: #f0f0f0 !important">
+      <ion-item>
+        <ion-select [(ngModel)]="Section" interface="popover" style="width: 100%;"  (ionChange)='onSecChange()'>
+          <ion-option *ngFor="let key of section" [value]="key.value">{{key.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+  
+      <div *ngFor="let sec of section">
+        <div *ngIf="Section==sec.value">
+          <ion-grid>
+            <ion-row>
+              <ion-col col-2 *ngFor="let item of questions[sec.value]" text-center>
+                <div [class]="setQuesStatus(item)" tappable (click)="onSelectQues(item.quesorder,sec.value)" >
+                  <div class="pads">
+                    {{item.quesorder}}
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </ion-content>
+    <ion-footer no-border>
+        <div >
+            <ion-grid>
+              <ion-row>
+                  <ion-col text-center>
+                  <div class="qbtn ans">
+                    <div class="pads">
+                     {{quesanswered}}
+                    </div>
+                  </div>
+                  <span class="f-11"><b>Correct Answer</b></span>
+                </ion-col>
+                <ion-col text-center>
+                  <div class="qbtn skip" >
+                    <div class="pads">
+                     {{quesskipped}}
+                    </div>
+                  </div>
+                 <span class="f-11"><b>Wrong Answer</b></span> 
+                </ion-col>
+                <ion-col text-center>
+                    <div class="qbtn" >
+                      <div class="pads">
+                       {{quesunseen}}
+                      </div>
+                    </div>
+                   <span class="f-11"><b>Not Attempted</b></span>
+                  </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+    </ion-footer>
+  </div>
+</div>
+  <ion-header>
+    <ion-navbar hideBackButton color="light">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-2 text-left>
+                <ion-buttons start>
+                    <button ion-button icon-only tappable (click)="openmenu()">
+                      <ion-icon name="apps"></ion-icon>
+                    </button>
+                  </ion-buttons>
+            </ion-col>
+            <ion-col col-8 text-center>
+                <ion-title>Solution </ion-title>
+            </ion-col>
+            <ion-col col-2 text-right>
+         <ion-buttons end *ngIf="testlangtype==2">
+      <button ion-button icon-only *ngIf="lang==1" tappable (click)="onChangeLang()">
+        <img src="assets/imgs/hindi.png" width="25px" />
+      </button>
+      <button ion-button icon-only *ngIf="lang==2" tappable (click)="onChangeLang()">
+        <img src="assets/imgs/en.png" width="25px" />
+      </button>
+    </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-navbar>
+      <ion-toolbar color="primary" style="min-height: auto;">
+        <ion-scroll scrollX style="height:30px;">
+            <div [class]="key.value==Section?'scroll-itemact':'scroll-item'"  *ngFor="let key of section" tapped (click)="SectionTab(key.value)">
+              {{key.name}}
+            </div>
+          </ion-scroll>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content overflow-scroll='true'>
+<div overflow-scroll="true" class="innner-body">
+    <div *ngFor="let sec of section">
+        <div *ngIf="Section==sec.value">
+            <div *ngFor="let item of questions[sec.value]" >
+                <div *ngIf="item.quesorder==currentques" [class]="item.quesorder==currentques? 'zoomIn':''" style="padding: 5px;margin-top:5px; width:100%; height:100%;overflow:hidden"
+                (swipe)="onQuesChanged($event,item.qv,sec.value)">
+                   <div text-left>
+                      <ion-grid>
+                      <ion-row>
+                          <ion-col col-12 text-center>
+                              <span style="font-size: 12px !important;" [style.color]="setmsgcolor(item)">{{setmsgans(item)}}</span>
+                            </ion-col>
+                        <ion-col col-8 text-left>
+                          <span class="qtol">Q:{{item.quesorder}}/{{sec.ques}}</span>
+                        </ion-col>
+                        <ion-col col-4 text-right>
+                            <ion-icon tappable (click)="onSubmitBookmark(item.qv,sec.value)" *ngIf="item.bookmark==0" style="font-size: 1.5em;" name="bookmarks"></ion-icon>
+                            <ion-icon tappable (click)="BookmarkDeleted(item.qv,sec.value)" *ngIf="item.bookmark==1" style="font-size: 1.5em;color:#ff7800" name="bookmarks"></ion-icon>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    </div>
+                   
+                    <div padding [innerHTML]="transform(item.commondata)" *ngIf="item.commondata!=''&&lang==1" text-left class="commondataauto"></div>
+                    <div padding [innerHTML]="transform(item.hcommondata)" *ngIf="item.commondata!=''&&lang==2" text-left class="commondataauto"></div>
+                  
+                      <div padding [innerHTML]="transform(item.ques)" *ngIf="lang==1" text-left></div>
+                      <div padding [innerHTML]="transform(item.hques)" *ngIf="lang==2" text-left></div>
+                    
+                    <div text-left>
+                      <ion-list *ngFor="let optn of item.optn">
+                          <ion-item [class]="anscheckview(item,optn)">
+                              <ion-label class="itempset" [innerHTML]="transform(optn.name)" *ngIf="lang==1" text-left></ion-label>
+                              <ion-label class="itempset" [innerHTML]="transform(optn.hname)" *ngIf="lang==2" text-left></ion-label>
+                            </ion-item>
+                        <!--
+                        <ion-item  *ngIf="optn.value==item.answer" style="border: 1px solid rgba(4, 168, 21, .3);color: #00a700;">
+                          <ion-label [innerHTML]="transform(optn.name)" *ngIf="lang==1" text-left></ion-label>
+                          <ion-label [innerHTML]="transform(optn.hname)" *ngIf="lang==2" text-left></ion-label>
+                        </ion-item>
+                        <ion-item *ngIf="optn.value!=item.answer&&item.ans_status!='answered'">
+                            <ion-label [innerHTML]="transform(optn.name)" *ngIf="lang==1" text-left></ion-label>
+                            <ion-label [innerHTML]="transform(optn.hname)" *ngIf="lang==2" text-left></ion-label>
+                          </ion-item>
+
+                          <ion-item *ngIf="optn.value!=item.answer&&item.ans_status=='answered'&&item.answeroptn==optn.value" style = 'border: 1px solid rgba(245, 0, 0, 0.3);color: rgb(247, 0, 0);'>
+                              <ion-label [innerHTML]="transform(optn.name)" *ngIf="lang==1" text-left></ion-label>
+                              <ion-label [innerHTML]="transform(optn.hname)" *ngIf="lang==2" text-left></ion-label>
+                          </ion-item>
+                          -->
+                      </ion-list>
+                    </div>
+                    <div padding *ngIf="item.videosolu!=''&&item.videosolu!=null">
+                      <button ion-button trapped (click)="openvvideos(item.videosolu)" >Video Solution</button>
+                    </div>
+                    <div padding [innerHTML]="transform(item.hexpln)" *ngIf="lang==2" text-left></div>
+                    <div padding [innerHTML]="transform(item.expln)" *ngIf="lang==1" text-left></div>
+                    <div padding>
+                    <button tappable clear (click)="openReport()" ion-button>Report this Question?</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <ion-fab bottom right>
+        <button ion-fab mini tappable (click)="forceReload($event)"><ion-icon name="refresh"></ion-icon></button>
+      </ion-fab>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="light">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <ion-buttons left>
+              <button ion-button tappable (click)="onQuesminsChanged()">
+                <ion-icon name="arrow-round-back" style="padding: 0px 5px;"></ion-icon>Prev
+              </button>
+            </ion-buttons>
+          </ion-col>
+         <ion-col col-8 style="text-align: center">
+          </ion-col>
+          <ion-col col-2>
+            <ion-buttons right>
+              <button ion-button tappable (click)="onQuesaddChanged()">
+                Next<ion-icon name="arrow-round-forward" style="padding: 0px 5px;"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-footer>

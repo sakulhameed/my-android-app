@@ -1,0 +1,68 @@
+<ion-header>
+        <ion-navbar color="primary">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>My Purchase Ebooks</ion-title>
+        </ion-navbar>
+        <ion-toolbar color="primary">
+            <super-tabs class="innertabs" transitionDuration="100" sideMenuThreshold="100" shortSwipeDuration="100" dragThreshold="100" allowElementScroll="true" scrollTabs="true" (tabSelect)="onTabSelect($event)" tabsPlacement="top"
+                toolbarBackground="primary" toolbarColor="light" indicatorColor="light">
+                <super-tab *ngFor="let p of items" [root]="p.sub_page" [title]="p.name" [id]="p.id"></super-tab>
+            </super-tabs>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content overflow-scroll='true' padding class="bgbody">
+        <ion-refresher (ionRefresh)="forceReload($event)">
+            <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+        <div *ngIf="loader==1">
+            <div class="showbox">
+                <div class="loader">
+                  <svg class="circular" viewBox="25 25 50 50">
+                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+                  </svg>
+                </div>
+              </div>
+        </div>
+  
+        <div *ngIf="loader!=1" style="padding: 0px; min-height:100%;" (swipe)="slideToIndex($event)">
+            <div text-center padding *ngIf="datacountlist<=0">
+                <img src="assets/imgs/no-cartitems.png" width="100%" />
+                <h4>"Your Purchase is Empty !!! Add some items to purchase"</h4>
+                <button ion-button tappable (click)="openhome()">Continue Shopping</button>
+            </div>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-6  *ngFor="let item of datalistitems">
+                        <div class="postcard animated bounceIn" text-center >
+                            <header tappable (click)="itemView(item)">
+                                <div class="bio">
+                                    <img [src]="getSafeUrl(item.image)" height="180px" alt="Product" class="bg">
+                                </div>
+                            </header>
+                            <div class="content">
+                                <div text-center tappable (click)="itemView(item)">
+                                    <h3 class="product-title blackbtn" style="height: 40px;overflow:hidden">
+                                        {{item.title}}
+                                    </h3>
+                                </div>
+                                <div class="product-buttons">
+                                    <button small ion-button outline icon-start tappable (click)="itemView(item)">
+                                        <ion-icon name='eye' is-active="false"></ion-icon>
+                                        View Book
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    
+    
+    
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </ion-content>

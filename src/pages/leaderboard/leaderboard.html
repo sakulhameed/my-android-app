@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>leaderboard</ion-title>
+    <ion-buttons end *ngIf="successres=='1'">
+      <button ion-button tappable (click)="viewResult(resultsec)">
+        Result
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content overflow-scroll='true' padding class="bgimg">
+
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content >
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="loadershow">
+    <div class="showbox">
+        <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+</div>
+<div *ngIf="!loadershow">
+  <div>
+    <div text-center padding>
+      <h4>{{testname}}</h4>
+    </div>
+    <ion-grid>
+      <ion-row style="height: 180px;">
+        <ion-col class="animated bounceIn" *ngFor="let r of toprank">
+          <img *ngIf="r.image" [src]="getSafeUrl(r.image)" style="width: 95px;height: 90px;border-radius:50%;" alt="background" class="setimage">
+          <img *ngIf="!r.image" src="assets/imgs/user.png" style="width: 95px;height: 90px;border-radius:50%;" alt="background" class="setimage">
+          <span class="ranklist">{{r.rank}}</span>
+          <h2 class="settestlistheight">{{r.name}}</h2>
+          <h2 style="font-size: 20px !important;" class="settestlistheight">{{r.score}}</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="postcard animated bounceIn" style="margin-bottom:5px;border-radius: 0px;overflow:hidden;background: #043b7b;color: #fff;"
+    no-padding text-center>
+    <div class="content" no-padding>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <div text-center>
+              <h2 class="settestlistheight">Rank</h2>
+            </div>
+          </ion-col>
+          <ion-col col-8>
+            <div text-center>
+              <h2 class="settestlistheight">Name</h2>
+            </div>
+          </ion-col>
+          <ion-col col-2>
+            <div text-center>
+              <h2 class="settestlistheight">Score</h2>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div>
+    <div *ngFor="let r of toporderlist" class="postcard animated bounceIn" style="margin-bottom:5px;border-radius: 0px;overflow:hidden" no-padding text-center>
+      <div class="content" no-padding>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-2>
+              <div text-center>
+                <h2 class="settestlistheight">{{r.rank}}</h2>
+              </div>
+            </ion-col>
+            <ion-col col-8>
+              <div text-left>
+                <h2 class="settestlistheight">{{r.name}}</h2>
+              </div>
+            </ion-col>
+            <ion-col col-2>
+              <div text-center>
+                <h2 class="settestlistheight">{{r.score}}</h2>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+</ion-content>
+
+<ion-footer *ngIf="successres=='1'">
+    <ion-toolbar color="secondary">
+        <div class="postcard animated bounceIn" style="background: #fad546;margin-bottom:5px;border-radius: 0px;overflow:hidden" no-padding text-center>
+            <div class="content" no-padding>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-2>
+                    <div text-center>
+                      <h2 class="settestlistheight">{{yourrank}}</h2>
+                    </div>
+                  </ion-col>
+                  <ion-col col-8>
+                    <div text-left>
+                      <h2 class="settestlistheight">{{yourname}}</h2>
+                    </div>
+                  </ion-col>
+                  <ion-col col-2>
+                    <div text-center>
+                      <h2 class="settestlistheight">{{yourscore}}</h2>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+    </ion-toolbar>
+  </ion-footer>

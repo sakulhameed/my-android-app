@@ -1,0 +1,130 @@
+page-livetestlist {
+    .postcard{
+        border-radius: 10px;
+    }
+    .quesCards {
+        box-shadow: 0px 0 20px rgba(0,0,0,.3);
+        margin:15px;
+        border-radius: 10px;
+        width: calc(100% - 30px);
+        position: relative;
+        top:5px;
+        z-index: 99;
+        height: auto;
+    }
+    .pads0{
+        padding: 0px;
+    }
+    .colortextchat{
+        font-size: 24px;
+    font-weight: 500;
+    color: #38389c;
+    }
+    .mainbtn {
+        background: #ed3c64;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 24px 38px;
+    border-radius: 30px;
+    margin: 10px auto;
+    }
+    .submbtn{
+        background: #6c6dd9;
+        font-size: 15px;
+        font-weight: 600;
+        min-width: 149px;
+        padding: 24px 30px;
+        border-radius: 30px;
+    }
+    .colorgrychat {
+        color: #989898;
+    font-size: 15px;
+    font-weight: 800;
+    }
+    .prfimg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 14px auto;
+    }
+    .iconbg{
+        background: #6a6ed9;
+    padding: 5px 12px;
+    border-radius: 50%;
+    }
+    .livechatbox {
+        padding: 10px;
+        //background-color: #37389c;
+        background-color: #191919;
+        min-height: 100vh;
+    }
+    .comingsoon{
+        width: 100%;
+        height: 100vh;
+        background: url('../assets/imgs/comingsoon.jpg') no-repeat center center fixed !important;
+    }
+    .livechatbox ion-icon {
+        font-size: 28px;
+        color: #fff;
+    }
+    .postcard header{
+        text-align: center;
+        background: -moz-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(71, 105, 230, 1)), color-stop(100%, rgba(51, 79, 189, 1)));
+        background: -webkit-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: -o-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: -ms-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008080', endColorstr='#4B72F2', GradientType=1);
+        color: #fff;
+        border: 2px solid #fff;
+        height: 180px;
+        } 
+        h4 {
+            font-size: 1.2rem;
+        }
+        .postcard header::before{
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 110%;
+            height: 20%;
+            background: url(../assets/imgs/wave.png);
+            background-size: cover !important;
+            opacity: .6;
+        }
+        
+@-webkit-keyframes blinker {
+    from {opacity: 1.0;}
+    to {opacity: 0.0;}
+  }
+  .blink{
+    color: red;
+    font-weight: 800;
+    position: relative;
+    top: 0;
+    right: 10px;
+    z-index: 10;
+    font-size: 15px;
+      text-decoration: blink;
+      -webkit-animation-name: blinker;
+      -webkit-animation-duration: 0.6s;
+      -webkit-animation-iteration-count:infinite;
+      -webkit-animation-timing-function:ease-in-out;
+      -webkit-animation-direction: alternate;
+  }
+        .postcard header::after{
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 110%;
+            height: 20%;
+            background: url(../assets/imgs/wave2.png);
+            background-size: cover !important;
+            opacity: .6;
+        }
+
+
+}

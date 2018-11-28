@@ -1,0 +1,105 @@
+page-profile {
+    .item-inner {
+      //  border-bottom: none !important;
+    }
+
+.listitemsimg{
+    position: relative;
+    top: 4px;
+    margin-right: 4px;
+}
+.item-md {
+    padding-left: 25px;
+}
+h4{
+    font-size: 13px;
+}
+ .menutoptoolbar {
+    background: url('../assets/imgs/menu.jpg'); 
+    background-size: cover;
+    height: 200px;
+    padding-top: 0px;
+    }
+    .centerlogo {
+        padding: 10px;
+        text-align: center;
+    }
+    .toolbar-content{
+        padding: 0px;
+    }
+    .prfimg{
+        width: 40%;
+        float: left;
+    }
+    .prfimgpoints{
+        width: 60%;
+        float: left;
+    }
+    .item-inner{
+       // padding: 0px;
+    }
+    .label-md { margin: 0px; }
+    .card-title-md {
+    display: block;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #0da9ef;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.card-content-md {
+        padding: 10px;
+    }
+
+    .price0ff {
+        text-decoration: line-through;
+        margin-left: 8px;
+        font-size: 14px;
+        color: #878787;
+    }
+    .prctgeoff {
+        color: #56c930;
+    }
+.ion-cardbanner {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-titleban {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitleban {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+[icon-left] ion-icon {
+    line-height: 1.5 !important;
+}
+.item-block .item-inner {
+  //  border-bottom: 0px solid #dedede !important;
+}
+ion-icon{
+    color: #4667f2;
+    font-size: 20px;
+    padding: 0px 12px;
+}
+.item {
+    padding: 0px;
+}
+}

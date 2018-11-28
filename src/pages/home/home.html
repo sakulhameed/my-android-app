@@ -1,0 +1,137 @@
+<ion-header color="primary">
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <ion-buttons end style="padding: 0px 7px;">
+      <button ion-button class="ntfyblue" tappable (click)="testpackageview(CartPage)" icon-only>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+   <!-- <ion-buttons end style="padding: 0px 7px;">
+      <button ion-button class="ntfyblue" tappable (click)="testpackageview(NotificationPage)" icon-only>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+  <ion-toolbar color="primary" style="min-height: auto;">
+    <ion-scroll scrollX style="height:75px;">
+      <div class="scroll-item" *ngFor="let p of parctice_items" tappable (click)="openPage(p)">
+        <div class="bgdummy">
+          <img [src]="p.icon" alt="avatar" class="setimg">
+        </div>
+        <h6>{{p.title}}</h6>
+      </div>
+    </ion-scroll>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll='true' #container style="background-color: #f0f0f0 !important;">
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div>
+    <div class="whitebg" padding text-left>
+      <h3 class="acolor">Hi {{username}}</h3>
+      <h6 class="afcolor">{{msg}}</h6>
+    </div>
+    <div class="whitebg" *ngIf="showlive==1">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 text-left style="border-bottom:1px solid #e8e6e6;">
+            <h4 class="acolor" style="font-size: 15px;">Live Test</h4>
+          </ion-col>
+          <ion-col col-12 style="margin-top: 15px;" *ngFor="let item of liveData">
+            <ion-row tappable (click)="liveTestSelected(item,item.btntype)">
+              <ion-col col-2 text-center>
+                <img style="width: 45px;" [src]="getSafeUrl(item.image)" alt="avatar" class="setimg">
+              </ion-col>
+              <ion-col col-8 text-left style="padding-left: 10px;">
+                <h3>{{item.name}}</h3>
+                <div text-center>
+                  <p>{{item.btnsubtitle}}</p>
+                </div>
+              </ion-col>
+              <ion-col col-2 text-center>
+                <ion-badge class="livebge" color="danger">Live</ion-badge>
+                <button ion-button small clear item-end>
+                  <ion-icon [name]="item.btnicon" style="font-size: 2em;margin-top:18px;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngIf="showslide==1">
+      <div class="whitebg">
+        <ion-slides class="slider" speed="1000" autoplay="5000" effect="slide" loop="true" pager="true">
+          <ion-slide *ngFor="let slide of slideData" class="bgdummy">
+            <img class="slider" [src]="getSafeUrl(slide.image)" tappable (click)="openofferpage(slide.offer_url)" />
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+    <div class="whitebg">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 text-left style="border-bottom:1px solid #e8e6e6;">
+            <h4 class="acolor" style="font-size: 15px;">Trending</h4>
+          </ion-col>
+          <ion-col col-12 style="margin-top: 15px;" *ngFor="let tred of tredData">
+            <ion-row tappable (click)="itemSelectedtrd(tred)">
+              <ion-col col-2 text-center>
+                <img style="width: 45px;" [src]="getSafeUrl(tred.image)" alt="avatar" class="setimg">
+              </ion-col>
+              <ion-col col-8 text-left style="padding-left: 10px;">
+                <h3>{{tred.title}}</h3>
+                <p class="afcolor">{{tred.subtitle}}</p>
+              </ion-col>
+              <ion-col col-2 text-left>
+                <button ion-button small clear item-end>
+                  <ion-icon name="arrow-dropright-circle" style="font-size: 2em;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="whitebg">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 text-left style="border-bottom:1px solid #e8e6e6;">
+            <h4 class="acolor" style="font-size: 15px;">Latest Post</h4>
+          </ion-col>
+          <ion-col col-12 *ngFor="let item of datalistitems">
+            <div class="postcardlist" text-center>
+              <div class="content" tappable (click)="itemSelected(item)">
+                <div style="font-size: 14px;font-weight: 700;color: #043b7b;" [innerHTML]="transform(item.title)"
+                  text-left></div>
+                <div style="font-size: 11px;" [innerHTML]="shortstring(item.excerpt)" text-left></div>
+              </div>
+              <div>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col text-left>
+                      <p style="font-size: 13px;font-weight: 700;color: #ccc;margin: 0;">{{dateformats(item.modified)}}</p>
+                    </ion-col>
+                    <ion-col text-right>
+                      <button ion-button clear icon-only tappable (click)="share(item)">
+                        <ion-icon name="share"></ion-icon>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col col-12 style="font-weight:bold;color: #4667f2;" (click)="openPostlist()">
+            <h5>Read More</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

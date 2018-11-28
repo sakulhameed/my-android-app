@@ -1,0 +1,117 @@
+page-home {
+.slider{
+    width: 100%;
+    height: 140px;
+}
+.col {
+    padding: 0px;
+}
+
+ion-scroll[scrollX] {
+    white-space: nowrap;
+    .scroll-item {
+        display: inline-block;
+        padding: 0px 5px;
+        color: #ffffff !important;
+        border-radius: 0px;
+        margin: 0px 5px;
+        font-weight: bold;
+        text-align: center;
+        width: 22%;
+    }
+  }
+ion-content{
+    background-color: #fff !important;
+}
+
+.button-md {
+    border-radius: 0px;
+    overflow: hidden;
+    height: auto;
+    font-size: 13px !important;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+.cardwidth {
+    width: 200px;
+}
+.setradiushalf1{
+    width: 43px;
+    height: 45px;
+    background: #043b7b;
+    color: #fff;
+}
+h5{
+    font-size: 13px;
+}
+
+h6{
+    font-size: 11px !important;
+    margin-top: 1px;
+}
+.livetest-content {
+    background: url('../assets/imgs/bgfeeds.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    padding: 10px;
+    }
+.cardwidth{
+    width: 100% !important;
+}
+.postcard{
+    padding: 0px !important;
+}
+.postcardlist {
+    width: 100%;
+    margin: 4px auto;
+    padding: 8px;
+    border-radius:0px;
+    padding-bottom: 0;
+    background-color: #fff;
+    -webkit-box-shadow: #bdc3c7 0 1px 2px;
+    box-shadow: #bdc3c7 0 1px 2px;
+}
+.content1{
+    padding: 10px;
+    text-align: left !important;
+    margin: 4px auto;
+    border-radius:0px;
+    background-color: #fff;
+    -webkit-box-shadow: #bdc3c7 0 1px 2px;
+    box-shadow: #bdc3c7 0 1px 2px;
+}
+.setimg {
+    position: relative;
+    top: 3px;
+    width: 50px;
+}
+.button[icon-only] {
+    padding: 6px 4px;
+}
+.badge-md-danger {
+    color: #fff;
+    background-color: #f53d3d;
+    position: absolute;
+    font-size: 9px;
+    padding: 3px;
+    top: -5px;
+    right: 10px;
+    z-index: 99;
+}
+.afcolor { color: #afafaf;margin: 0px; }
+.acolor { color: #6a6a6b; }
+.livebge {
+    font-size: 13px;
+    //top: -12px;
+    padding: 3px 5px;
+    font-weight: bold;
+}
+.btn-livetest{
+    font-size: 15px;
+    padding: 5px 10px;
+}
+h3{
+    font-size: 15px;
+    color:#424242;
+}
+}
+

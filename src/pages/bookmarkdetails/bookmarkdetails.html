@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Bookmark Questions</ion-title>
+    <ion-buttons right *ngIf="testlangtype==2">
+      <button ion-button icon-only *ngIf="lang==1" tappable (click)="onChangeLang()">
+        <img src="assets/imgs/hindi.png" width="25px" />
+      </button>
+      <button ion-button icon-only *ngIf="lang==2" tappable (click)="onChangeLang()">
+        <img src="assets/imgs/en.png" width="25px" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content overflow-scroll='true'>
+  <div *ngFor="let item of items">
+    <div style="padding:0px 10px;">
+    <div *ngIf="item.qv==currentindex" class="postcard setpostcard" style="padding: 5px;margin-top:5px; width:100%; height:90vh;overflow-y:scroll;"
+      (swipe)="onQuesChanged($event,item.qv)">
+      <div class="content">
+        <div padding [innerHTML]="transform(item.commondata)" *ngIf="item.commondata!=''&&lang==1" text-left [class]="item.qcmd==1? 'commondata':'commondataauto'"
+          tappable (click)="commondataheight()"></div>
+        <div padding [innerHTML]="transform(item.hcommondata)" *ngIf="item.commondata!=''&&lang==2" text-left [class]="item.qcmd==1? 'commondata':'commondataauto'"
+          tappable (click)="commondataheight()"></div>
+        <ion-badge class="viewallbtn" *ngIf="item.commondata!=''&&item.qcmd==1" tappable (click)="commondataheight(item)">View
+          All</ion-badge>
+        <div padding [innerHTML]="transform(item.ques)" *ngIf="lang==1" text-left></div>
+        <div padding [innerHTML]="transform(item.hques)" *ngIf="lang==2" text-left></div>
+
+        <div text-left>
+          <div class="optn" *ngFor="let optn of item.optn" [style]="getBackground(optn,item)">
+            <ion-label no-margin [innerHTML]="transform(optn.name)" *ngIf="lang==1" text-left></ion-label>
+            <ion-label no-margin [innerHTML]="transform(optn.hname)" *ngIf="lang==2" text-left></ion-label>
+          </div>
+        </div>
+
+        <div padding [innerHTML]="transform(item.hexpln)" *ngIf="lang==2" text-left></div>
+        <div padding [innerHTML]="transform(item.expln)" *ngIf="lang==1" text-left></div>
+      </div>
+    </div>
+  </div></div>
+</ion-content>

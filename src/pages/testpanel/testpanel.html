@@ -1,0 +1,38 @@
+<!--
+  Generated template for the TestpanelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary" hide-tabs>
+    <ion-title>IBPSGuide - Test Panel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content overflow-scroll='true' padding>
+  <div text-left style="padding-top:10px;" padding>
+    <h3>{{title}}</h3>
+    <h6>
+      <strong>Instructions:</strong>
+    </h6>
+    <p>The clock will be set at the server. The countdown timer in the top of screen will display the remaining time available
+      for you to complete the examination. When the timer reaches zero, the examination will end by itself. You will not
+      be required to end or submit your examination.</p>
+    <div text-left>
+      <h5>Total Ques: {{tot_ques}} Ques</h5>
+      <h5>Total Time: {{time_limit}} mins</h5>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar style="padding: 0px;" color="light">
+    <button style="min-height: 45px;font-size: 18px;" ion-button block icon-right color="primary" tappable (click)="itemSelected(items)">
+      {{btnname}}
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-footer>

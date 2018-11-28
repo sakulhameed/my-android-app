@@ -1,0 +1,130 @@
+page-viewpackage { 
+    h6{
+        font-size: 13px !important;
+        margin-top: 1px;
+    }
+    .innerimg {
+        width: 94%;
+    }   
+    .label-md,.list-md{
+        margin: 0px;
+    }
+    .item-md {
+        border-bottom: 1px solid #e6e6e6;
+        margin-bottom: 3px;
+    }
+    .cardpads:after {
+        content: "";
+        position: absolute;
+        left: 4%;
+        z-index: 100;
+        top: 20%;
+        width: 3px;
+        height: 60%;
+        background: #519fe8;
+      }
+      .cardpadsred:after {
+        content: "";
+        position: absolute;
+        left: 4%;
+        z-index: 100;
+        top: 20%;
+        width: 3px;
+        height: 60%;
+        background: #fa6767;
+      }
+      .cardpadsgreen:after {
+        content: "";
+        position: absolute;
+        left: 4%;
+        z-index: 100;
+        top: 20%;
+        width: 3px;
+        height: 60%;
+        background: #1c9373;
+      }
+      .cardpadsred:after {
+        content: "";
+        position: absolute;
+        left: 4%;
+        z-index: 100;
+        top: 20%;
+        width: 3px;
+        height: 60%;
+        background: #fa6767;
+      }
+    ion-list{
+        background: #fff;
+    }
+    .marginheader {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        text-align: left;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .toolbar-md {
+        min-height: 44px !important;
+    }
+
+   
+        .innertabs super-tab-button {
+            background-color: rgba(255, 255, 255, 0) !important;
+              } 
+        .toolbar-md {
+            padding: 0px;
+        }
+    
+         header{
+            text-align: center;
+            //background-color: #4667f2;
+            background: -moz-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(71, 105, 230, 1)), color-stop(100%, rgba(51, 79, 189, 1)));
+            background: -webkit-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+            background: -o-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+            background: -ms-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+            background: linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+            color: #fff;
+            border-radius: 0px !important;
+            } 
+             header::before{
+                content: "";
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                width: 110%;
+                height: 20%;
+                background: url(../assets/imgs/wave.png);
+                background-size: cover !important;
+                opacity: .6;
+            }
+            header::after{
+                content: "";
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                width: 110%;
+                height: 24%;
+                background: url(../assets/imgs/wave2.png);
+                background-size: cover !important;
+                opacity: .6;
+            }
+           .product-title{ color: #ffffff;}
+           .cusbio{
+                padding: 8px;
+                margin-top: 5px !important;
+                margin-bottom: 5px !important;
+                width: 50px;
+                height: 50px;
+                background: #fff;
+                text-align: center;
+                margin: auto;
+                border-radius: 50%;
+            }
+            .button-md {
+                height: 4rem;
+            }
+    
+            
+
+}

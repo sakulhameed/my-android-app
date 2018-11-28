@@ -1,0 +1,12 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+      <ion-title>{{items.title}}</ion-title>
+ </ion-navbar>
+
+</ion-header>
+
+
+<ion-content overflow-scroll='true' padding>
+  <div style="padding: 9px;" text-wrap [innerHTML]="transform(items.description)" text-left></div>
+</ion-content>

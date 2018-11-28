@@ -1,0 +1,49 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <ion-title>profile</ion-title>
+      <!--<ion-buttons end style="padding: 0px 7px;">
+        <button ion-button class="ntfyblue animated infinite pulse" tappable (click)="itemSelectedpack(NotificationPage)" icon-only>
+          <ion-icon name="notifications" style="color: #fff;"></ion-icon>
+        </button>
+      </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content overflow-scroll='true' class="cards-bg">
+    <ion-refresher (ionRefresh)="forceReload($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+      <div style="min-height: 120px;background-color: #4667f2">
+        <ion-grid>
+           <ion-row>
+             <ion-col col-4 text-right>
+               <img [src]="getSafeUrl(profileimage)" style="width: 85px; height: 80px;border-radius:50%;" />
+           </ion-col>
+           <ion-col col-8 text-center>
+            <h4 style="color:#fff;margin:0px;margin-top:5px;font-size:15px;">Hi {{setusername}}</h4>
+            <h4 style="color:#fff;margin:0px;margin-top:5px;">{{setemail}}</h4>
+               <button *ngIf="btntype==0" ion-button color="greenans" tappable (click)="itemSelectedpack(SubscribePage)">{{btnname}}</button>
+               <button *ngIf="btntype==1" ion-button color="greenans" >{{btnname}}</button>       
+           </ion-col>
+           </ion-row>
+         </ion-grid>
+     
+       </div>
+
+       <div style="margin-bottom: 30px;position: relative;top: -30px;">
+        <div padding>
+      <ion-list>
+          <button ion-item *ngFor="let item of pages" tappable (click)="openPage(item)">
+              <ion-icon [name]="item.icon"></ion-icon> {{item.title}}
+          </button>  
+        </ion-list>
+      </div></div>
+</ion-content>

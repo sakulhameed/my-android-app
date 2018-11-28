@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Payment List</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content overflow-scroll='true' padding>
+    <ion-fab top center edge *ngIf="loadershow">
+        <button style="background-color: #fff;" ion-fab mini>
+            <img src="assets/imgs/loaders.gif" />
+        </button>
+    </ion-fab>
+    <ion-refresher (ionRefresh)="forceReload($event)">
+        <ion-refresher-content refreshingText="Reload from API...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <div padding>
+        <div *ngFor="let item of datalistitems" >
+            <div class="postcard" *ngIf="item.paystatus=='Completed'" style="margin-bottom:5px;border-radius: 8px;overflow:hidden"
+                no-padding text-center>
+                <div class="content" style="border-left:7px solid rgb(28, 147, 115)" no-padding>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <div text-left>
+                                    <h5 style="font-size: 14px;">{{item.title}}</h5>
+                                    <p text-right style="margin: 0px;color:rgb(28, 147, 115)">{{item.paystatus}} </p>
+                                    
+                                    <div class="shop-tracking-status" *ngIf="item.hard_copy=='1'&&item.paystatus=='Completed'">
+                                        <div class="well">
+                                
+                                            <div class="order-status">
+                                
+                                                <div class="order-status-timeline">
+                                                    <!-- class names: c0 c1 c2 c3 and c4 -->
+                                                    <div [class]="delmainclass(item.delivery_status)"></div>
+                                                </div>
+                                
+                                                <div class="image-order-status image-order-status-new img-circle">
+                                                    <div class="icon"></div>
+                                                </div>
+                                                <div class="image-order-status image-order-status-active img-circle">
+                                                    <div class="icon"></div>
+                                                </div>
+                                                <div class="image-order-status image-order-status-intransit img-circle">
+                                                    <div class="icon"></div>
+                                                </div>
+                                                <div class="image-order-status image-order-status-delivered img-circle">
+                                                    <div class="icon"></div>
+                                                </div>
+                                                <div class="image-order-status image-order-status-completed img-circle">
+                                                    <div class="icon"></div>
+                                                </div>
+                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p text-right style="margin: 0px;color:rgb(28, 147, 115)">{{item.courier_details}} - {{delmainname(item.delivery_status)}} </p>
+                                </div>
+                            </ion-col>
+
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+
+            <div class="postcard animated bounceIn" *ngIf="item.paystatus!='Completed'" style="margin-bottom:5px;border-radius: 8px;overflow:hidden"
+                no-padding text-center>
+
+                <div class="content" style="border-left:7px solid #fa6767" no-padding>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <div text-left>
+                                    <h5 style="font-size: 14px;">{{item.title}}</h5>
+                                    <p text-right style="margin: 0px;color:#fa6767">{{item.paystatus}} </p>
+                                </div>
+                            </ion-col>
+
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-buttons end tappable (click)="updatepay()">
+            <button ion-button icon-right>
+                Send Update Request
+                <ion-icon name="send"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

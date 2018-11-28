@@ -1,0 +1,29 @@
+page-leaderboard {
+.settestlistheight{
+    margin:0px;
+    font-size: 14px;
+    line-height: 35px;
+    font-weight: 700;
+}
+.setimage{
+    width: 95px;
+    border-radius: 50%;
+    background: #fff;
+    height: 80px;
+}
+.bgimg{
+    background: url('../assets/imgs/bgleaderboard.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+}
+.ranklist{
+    font-size: 15px;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 77px;
+    left: 45px;
+    color: #fb0303;
+    font-weight: 700;
+}
+}

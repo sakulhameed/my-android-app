@@ -1,0 +1,32 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// -webkit-box-shadow:#bdc3c7 0 5px 5px;-moz-box-shadow:#bdc3c7 0 5px 5px;box-shadow:#bdc3c7 0 5px 5px
+/* new css */
+.bgdummy { background-image: url('../assets/imgs/dummy_feed_image.png') !important; }.list-md .item-block .item-inner {border-bottom: none;}
+.nopads{padding: 0px !important;}.tab-button[aria-selected=true] .tab-button-icon{color:#347eff!important}.tab-button[aria-selected=true] .tab-button-text{color:#347eff!important}.setimg{position:relative;top:4px;width:50px}.colborder{padding:1px 4px;border:1px solid #cccccc4a}.nopads{padding:0}.maintabcolor super-tab-button{background-color:#fff!important}.maintabcolor .selected ion-icon{color:#4667f2!important}.maintabinner{background-color:#4667f2!important}
+/* not in use */
+.col{padding:4px}.bgbody{background:#f3f3f3}ion-content{background:#fff !important}.settitle{position:relative;top:-4px;left:5px;font-size:18px}.inner{width:2000px;height:100%}.cardwidth{width:150px;float:left;margin:5px}header{display:block;overflow:hidden;position:relative;padding-bottom:5px;-moz-border-radius-topleft:8px;-webkit-border-top-left-radius:8px;border-top-left-radius:8px;-moz-border-radius-topright:8px;-webkit-border-top-right-radius:8px;border-top-right-radius:8px}.postcard{border: 1px solid #f2f2f2;width:100%;margin:auto;-webkit-border-radius:8px;-moz-border-radius:8px;-ms-border-radius:8px;-o-border-radius:8px;border-radius:8px;padding-bottom:.5em;background-color:#fff;}.content{width:100%;padding:5px;text-align:center}.bg{border-bottom:8px solid #5cc0ff;width:100%}.avatarcontainer{position:absolute;bottom:2px;;right:0;left:0;margin:auto;width:70px;height:70px;display:block}.avatarcontainer:hover>.hover{opacity:1}.avatar{width:100%;border:8px solid #5cc0ff;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%;overflow:hidden;position:relative}.avatar img{width:65px;height:65px}.avatar:hover + .hover{opacity:1;cursor:pointer}.setradiushalf{border-radius:50%!important;overflow:hidden}.scroll-content{padding:0px!important}.button-small-md{padding:0 .5em}.product-title{font-size:12px;font-weight:500;margin-bottom:10px;text-align:center;color:#4e4d4d}.product-price{color:#1c9373;font-size:13px}.product-price>del{margin-right:5px;color:#9da9b9}.product-buttons{padding:0;text-align:center}.setradiushalf{width:55px;height:55px}.setradiushalf100{width:100%}.innerimg{width:85%;margin:auto;text-align:center}.loading-content{text-align:center}h6{font-size:10px}h1,h2,h3,h4,h5,h6{margin-top:8px;margin-bottom:5px}.ntfyblue{color:#4b92d5}.alert-title{font-size:17px!important}.modal-wrapper{width:100%;height:100%;top:0;left:0}.settestlistheight{height:36px;overflow:hidden}.titleh5{font-size:14px}.whitebg{background:#fff;margin-bottom:5px}.bar-button-md{text-transform:capitalize!important}.swiper-container-horizontal>.swiper-pagination-bullets{left:0;bottom:0;width:100%}.notifytop{background-color:#c5ffc5;text-align:left;border-bottom:1px solid #04a704}.notifytop h6{font-size:13px!important;margin-top:1px}.button-md{text-transform:capitalize!important}
+  /* loader css */
+.showbox{position:absolute;top:0;bottom:0;left:0;right:0;padding:5%}.loader{position:relative;margin:0 auto;width:40px}.loader:before{content:'';display:block;padding-top:100%}.circular{-webkit-animation:rotate 2s linear infinite;animation:rotate 2s linear infinite;height:100%;-webkit-transform-origin:center center;transform-origin:center center;width:100%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto}.path{stroke-dasharray:1,200;stroke-dashoffset:0;-webkit-animation:dash 1.5s ease-in-out infinite,color 6s ease-in-out infinite;animation:dash 1.5s ease-in-out infinite,color 6s ease-in-out infinite;stroke-linecap:round}@-webkit-keyframes rotate{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes dash{0%{stroke-dasharray:1,200;stroke-dashoffset:0}50%{stroke-dasharray:89,200;stroke-dashoffset:-35px}100%{stroke-dasharray:89,200;stroke-dashoffset:-124px}}@keyframes dash{0%{stroke-dasharray:1,200;stroke-dashoffset:0}50%{stroke-dasharray:89,200;stroke-dashoffset:-35px}100%{stroke-dasharray:89,200;stroke-dashoffset:-124px}}@-webkit-keyframes color{100%,0%{stroke:#d62d20}40%{stroke:#0057e7}66%{stroke:#008744}80%,90%{stroke:#ffa700}}@keyframes color{100%,0%{stroke:#d62d20}40%{stroke:#0057e7}66%{stroke:#008744}80%,90%{stroke:#ffa700}}
+/* end loader css */
+.toast-md .toast-wrapper {
+    margin: 15% auto !important;
+    width: 85% !important;
+    border-radius: 30px !important;
+    text-align: center;
+    background-color: #777777;
+}

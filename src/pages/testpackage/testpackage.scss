@@ -1,0 +1,50 @@
+page-testpackage {
+    .taketest .postcard header{
+      text-align: center;
+      border-radius: 7px 7px 0px 0px;
+      background: -moz-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+      background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(71, 105, 230, 1)), color-stop(100%, rgba(51, 79, 189, 1)));
+      background: -webkit-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+      background: -o-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+      background: -ms-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+      background: linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+      //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008080', endColorstr='#4B72F2', GradientType=1);
+      color: #fff;
+      border: 2px solid #fff;
+      
+      } 
+      .taketest .postcard header::before{
+          content: "";
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          width: 110%;
+          height: 20%;
+          background: url(../assets/imgs/wave.png);
+          background-size: cover !important;
+          opacity: .6;
+      }
+      .taketest .postcard header::after{
+          content: "";
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          width: 110%;
+          height: 20%;
+          background: url(../assets/imgs/wave2.png);
+          background-size: cover !important;
+          opacity: .6;
+      }
+      .taketest .product-title{ color: #ffffff;}
+      .taketest .cusbio{
+          padding: 8px;
+          margin-top: 5px !important;
+          margin-bottom: 5px !important;
+          width: 45px;
+          height: 45px;
+          background: #fff;
+          text-align: center;
+          margin: auto;
+          border-radius: 50%;
+      }
+}

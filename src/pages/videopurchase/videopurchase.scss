@@ -1,0 +1,114 @@
+page-videopurchase {
+
+    .toolbar-md {
+        min-height: 44px !important;
+    }
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .indicator{
+		display: none;
+	}
+	super-tabs-toolbar > ion-toolbar.toolbar.scroll-tabs .tab-buttons-container .tab-buttons super-tab-button{
+		min-width: auto;
+	}
+	super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-only .title {
+        padding: 4px 6px;
+        line-height: 35px;
+        font-size: 18px;
+        font-weight: 500 !important;
+    }    
+	super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button {
+		height: 42px;
+	}
+    super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button {
+        padding: 0px 0px 0px 5px;
+    }
+	super-tabs-toolbar .selected span {
+		color: #fff !important;
+        background: #4667f2;
+        border-radius: 0px;
+        text-transform: capitalize !important;
+    }
+    super-tabs-toolbar .selected span::after{
+        position: absolute;
+    z-index: 9999;
+    content: '';
+    bottom: -2px;
+    left: 26%;
+    width: 50%;
+    border-bottom: 5px solid #fff;
+    }
+    super-tabs-toolbar span {
+        color: #d0d9ff !important;
+        background: #4667f2;
+        border-radius: 0px;
+        text-transform: capitalize !important;
+    }
+      .innertabs super-tab-button {
+          background-color: rgba(255, 255, 255, 0) !important;
+            } 
+      .toolbar-md {
+          padding: 0px;
+      }
+  
+      .postcard header{
+        text-align: center;
+        border-radius: 7px 7px 0px 0px;
+        /*
+        background: -moz-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(71, 105, 230, 1)), color-stop(100%, rgba(51, 79, 189, 1)));
+        background: -webkit-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: -o-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: -ms-linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        background: linear-gradient(45deg, rgb(71, 105, 230) 0%, rgb(51, 79, 189) 100%);
+        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008080', endColorstr='#4B72F2', GradientType=1);
+        */
+        color: #fff;
+        border: 2px solid #fff;
+        
+        } 
+        /*
+        .postcard header::before{
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 110%;
+            height: 20%;
+            background: url(../assets/imgs/wave.png);
+            background-size: cover !important;
+            opacity: .6;
+        }
+        .postcard header::after{
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 110%;
+            height: 20%;
+            background: url(../assets/imgs/wave2.png);
+            background-size: cover !important;
+            opacity: .6;
+        }*/
+        
+        .product-title {
+            color: #000000;
+        }
+        .product-price {
+            color: #1c9373;
+            font-size: 15px;
+        }
+        .postcard{
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.15);
+        }
+        .cusbio{
+            padding: 8px;
+            margin-top: 5px !important;
+            margin-bottom: 5px !important;
+            width: 45px;
+            height: 45px;
+            background: #fff;
+            text-align: center;
+            margin: auto;
+            border-radius: 50%;
+        }
+  }
+  

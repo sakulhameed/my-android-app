@@ -1,0 +1,84 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+    <!--[style]="getBackground(packagestylecus)"-->
+    <header >
+        <div class="bio cusbio">
+            <img [src]="getSafeUrl(setimage)" alt="Product">
+        </div>
+        <h3 class="product-title blackbtn" style="position: relative;z-index: 10;font-size:22px;height: 44px;margin:0px;overflow:hidden">
+            {{title}}
+        </h3>
+    </header>
+    <div>
+        <ion-segment [(ngModel)]="langs">
+          <ion-segment-button value="1" trapped (click)="changeTab('1')">
+            English
+          </ion-segment-button>
+          <ion-segment-button value="2" trapped (click)="changeTab('2')">
+            Bilingual
+          </ion-segment-button>
+        </ion-segment>
+    </div>
+  </ion-header>
+  <ion-content overflow-scroll='true' class="bgbody">
+      <ion-refresher (ionRefresh)="forceReload($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+      </ion-refresher>
+        
+      <div *ngIf="loader==1">
+        <div class="showbox">
+          <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="loader!=1" style="padding: 0px; min-height:100%;" >
+      <ion-list>
+          <div *ngFor="let item of datalistitems">
+          <button ion-item tappable (click)="itemChecking(item,item.btntype)">
+            <div [class]="onpausetest(item,item.btntype)" no-padding>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-10 text-left>
+                    <h4 class="settestlistheight" style="white-space: initial;">{{item.name}}</h4>
+                    <p>{{item.tot_ques}} Questions, {{item.time_limit}} mins</p>
+                  </ion-col>
+                  <ion-col col-2 text-center>
+                    <button ion-button small clear item-end>
+                      <ion-icon [name]="onpausetesticon(item,item.btntype)" [style.color]="onpausetestcolor(item,item.btntype)" style="font-size: 2em;"></ion-icon>
+                    </button>
+                  </ion-col>
+                  <span style="color: #5fa2e2;position:absolute;bottom: 5px;right: 17px;">{{item.btnname}}</span>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </button>
+        </div>
+        </ion-list>
+      </div>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-content>
+    <ion-footer *ngIf="buy == '0'">
+      <ion-toolbar no-padding>
+          <ion-grid no-padding>
+              <ion-row>
+                <ion-col style="padding:0px 5px">
+                    <button ion-button block color="primary" icon-start tappable (click)="addtocart(items)"> 
+                      <!--<ion-icon name='cart' is-active="false"></ion-icon>--> Add To Cart</button>
+                </ion-col>
+                <ion-col style="padding:0px 5px">
+                    <button ion-button block color="secondary" icon-start tappable (click)="addtocart(items)"> Buy Now</button>
+                </ion-col>
+              </ion-row>
+              </ion-grid>
+      </ion-toolbar>
+    </ion-footer>
+    

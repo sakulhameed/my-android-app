@@ -1,0 +1,156 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>My Cart </ion-title>
+      <ion-buttons end *ngIf="datacountlist>0">
+        <button ion-button icon-start tappable (click)="showcouponsfunc()">
+          Having Coupon?
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content overflow-scroll='true'>
+  <div *ngIf="loader==1">
+    <div class="showbox">
+        <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+      </div>
+</div>
+
+<div *ngIf="loader!=1" style="padding: 0px; min-height:100%;">
+  <div text-center padding *ngIf="datacountlist<=0">
+    <img src="assets/imgs/no-cartitems.png" width="100%" />
+    <h4>"Your cart is Empty !!! Add some items to purchase"</h4>
+    <button ion-button tappable (click)="openhome()">Continue Shopping</button>
+</div>
+
+  <ion-list class="animated slideInLeft" >
+    <ion-item class="product-card" *ngFor="let item of datalistitems">
+      <ion-thumbnail item-start tappable (click)="itemSelected(item)">
+      <img [src]="getSafeUrl(item.image)">
+      </ion-thumbnail>
+      <h3 class="product-title blackbtn" tappable (click)="itemSelected(item)">
+        {{item.title}}
+      </h3>
+      <h4 class="product-price" style="font-size:20px;font-weight:bold;" tappable (click)="itemSelected(item)">
+        <del>Rs. {{item.discount}}</del>
+        Rs. {{item.price}}
+    </h4>
+      <button ion-button icon-only item-end color="danger" style="border-radius:50%;width: 25px;" tappable (click)="removeItem(item)"><ion-icon name="close"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+
+
+  <form *ngIf="datacountlist>0&&showshpaddres=='1'" [formGroup]="registorform" (ngSubmit)="onSubmit(registorform.value)" style="padding:20px;margin-bottom: 100px;">
+    <ion-item class="padsright16">
+        <ion-label floating >fullname</ion-label>
+        <ion-input type="text" formControlName="fullname" name="fullname"></ion-input>
+    </ion-item>
+    <ion-item class="padsright16">
+        <ion-label floating >Mobile No</ion-label>
+        <ion-input type="number" formControlName="mobile" name="mobile"></ion-input>
+    </ion-item>
+    <ion-item class="padsright16">
+        <ion-label floating >Address One</ion-label>
+        <ion-input type="text" formControlName="address1" name="address1"></ion-input>
+    </ion-item>
+    <ion-item class="padsright16">
+      <ion-label floating >Address Two (optional)</ion-label>
+      <ion-input type="text" formControlName="address2"  name="address2"></ion-input>
+  </ion-item>
+    <ion-item class="padsright16">
+        <ion-label floating >landmark (optional)</ion-label>
+        <ion-input type="text" formControlName="landmark" name="landmark"></ion-input>
+    </ion-item>
+    <ion-item class="padsright16">
+      <ion-label floating >pincode</ion-label>
+      <ion-input type="number" formControlName="pincode" name="pincode"></ion-input>
+    </ion-item>
+    <ion-item class="padsright16">
+      <ion-label floating >City</ion-label>
+      <ion-input type="text" formControlName="city" name="city"></ion-input>
+    </ion-item>
+    <ion-item class="padsright16">
+      <ion-label floating >State</ion-label>
+      <ion-input type="text" ></ion-input>
+      <ion-select formControlName="state" name="state" [(ngModel)]="stateval">
+          <ion-option  value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</ion-option>
+          <ion-option  value="Andhra Pradesh">Andhra Pradesh</ion-option>
+          <ion-option  value="Arunachal Pradesh">Arunachal Pradesh</ion-option>
+          <ion-option  value="Assam">Assam</ion-option>
+          <ion-option  value="Bihar">Bihar</ion-option>
+          <ion-option  value="Chandigarh">Chandigarh</ion-option>
+          <ion-option  value="Chhattisgarh">Chhattisgarh</ion-option>
+          <ion-option  value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</ion-option>
+          <ion-option  value="Daman and Diu">Daman and Diu</ion-option>
+          <ion-option  value="Delhi">Delhi</ion-option>
+          <ion-option  value="Goa">Goa</ion-option>
+          <ion-option  value="Gujarat">Gujarat</ion-option>
+          <ion-option  value="Haryana">Haryana</ion-option>
+          <ion-option  value="Himachal Pradesh">Himachal Pradesh</ion-option>
+          <ion-option  value="Jammu and Kashmir">Jammu and Kashmir</ion-option>
+          <ion-option  value="Jharkhand">Jharkhand</ion-option>
+          <ion-option  value="Karnataka">Karnataka</ion-option>
+          <ion-option  value="Kerala">Kerala</ion-option>
+          <ion-option  value="Lakshadweep">Lakshadweep</ion-option>
+          <ion-option  value="Madhya Pradesh">Madhya Pradesh</ion-option>
+          <ion-option  value="Maharashtra">Maharashtra</ion-option>
+          <ion-option  value="Manipur">Manipur</ion-option>
+          <ion-option  value="Meghalaya">Meghalaya</ion-option>
+          <ion-option  value="Mizoram">Mizoram</ion-option>
+          <ion-option  value="Nagaland">Nagaland</ion-option>
+          <ion-option  value="Odisha">Odisha</ion-option>
+          <ion-option  value="Puducherry">Puducherry</ion-option>
+          <ion-option  value="Punjab">Punjab</ion-option>
+          <ion-option  value="Rajasthan">Rajasthan</ion-option>
+          <ion-option  value="Sikkim">Sikkim</ion-option>
+          <ion-option  value="Tamil Nadu">Tamil Nadu</ion-option>
+          <ion-option  value="Telangana">Telangana</ion-option>
+          <ion-option  value="Tripura">Tripura</ion-option>
+          <ion-option  value="Uttar Pradesh">Uttar Pradesh</ion-option>
+          <ion-option  value="Uttarakhand">Uttarakhand</ion-option>
+          <ion-option  value="West Bengal">West Bengal</ion-option>
+      </ion-select>
+    </ion-item>
+    <div style="padding: 25px 0px;">
+      <button ion-button type="submit" class="cusheight" block  >Save Address & Checkout</button>
+    </div>
+  </form>
+ 
+ </div>
+
+ 
+
+
+</ion-content>
+<ion-footer >
+    <ion-toolbar *ngIf="datacountlist>0&&couponshow=='1'" style="background:#fff;" >
+        <ion-grid>
+          <ion-row>
+            <ion-col ion-item col-8>
+                <ion-input type="text" [(ngModel)]="coupon" placeholder="Enter Coupon"></ion-input>
+            </ion-col>
+            <ion-col col-4 text-center>
+                <button style="margin-top: 10px;" ion-button clear small tappable (click)="checkcoupon(1)">Apply Coupon</button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    <ion-toolbar color="primary"  >
+  <h4 class="product-price" style="color:#fff;font-size:20px;font-weight:bold;margin: 0px;margin-left: 15px;">Rs. {{totprice}} </h4>
+    <ion-buttons end *ngIf="datacountlist>0">
+      <button ion-button icon-right color="light"  tappable (click)="openWebpage()">
+        Checkout
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+</ion-toolbar>
+</ion-footer>
